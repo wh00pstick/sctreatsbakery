@@ -1017,6 +1017,21 @@ a.payment-link:hover {
   border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg);
 }
 .cake-bar-hero img { width: 100%; display: block; }
+.cake-bar-hero-pair {
+  display: grid; grid-template-columns: 16fr 9fr; gap: var(--space-4);
+  border-radius: 0; overflow: visible; box-shadow: none;
+}
+.cake-bar-hero-pair img {
+  height: 100%; object-fit: cover;
+  border-radius: var(--radius-xl); box-shadow: var(--shadow-lg);
+}
+.cake-bar-hero-pair img:first-child { aspect-ratio: 4 / 3; }
+.cake-bar-hero-pair img:last-child { aspect-ratio: 3 / 4; }
+@media (max-width: 720px) {
+  .cake-bar-hero-pair { grid-template-columns: 1fr; }
+  .cake-bar-hero-pair img:first-child { aspect-ratio: 16 / 9; }
+  .cake-bar-hero-pair img:last-child { aspect-ratio: 4 / 5; }
+}
 .cake-bar-how {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-6);
   max-width: 900px; margin: 0 auto var(--space-12); padding: var(--space-8) 0;
