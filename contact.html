@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Info & Contact — Sweet Confections by Kelsey</title>
+  <meta name="description" content="Place an order or book Sweet Confections for your event. Pickup in Pittsfield, MA — delivery available across the Berkshires, Western MA, Eastern NY, Southern VT & Northwest CT. Contact Kelsey at sctreatsshop@gmail.com." />
+  <link rel="canonical" href="https://sctreatsbakery.com/contact.html" />
+  <meta property="og:url" content="https://sctreatsbakery.com/contact.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Order Info & Contact — Sweet Confections by Kelsey" />
+  <meta property="og:image" content="https://sctreatsbakery.com/assets/wedding-table.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#c9748a" />
+</head>
+<body>
+<header class="nav-header" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="/assets/logo-full.png" alt="Sweet Confections by Kelsey — Fine Bakery" class="nav-logo-img" /><span class="logo-text">Sweet Confections</span></a>
+    <nav class="nav-links"><a href="index.html" class="nav-link">Home</a><a href="shop.html" class="nav-link">Shop</a><a href="gallery.html" class="nav-link">Gallery</a><a href="events.html" class="nav-link">Events & Food Truck</a><a href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link active">Order Info</a></nav>
+    <div class="nav-actions"><button class="cart-btn" id="cartBtn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count" id="cartCount">0</span></button><a href="contact.html" class="btn btn-primary nav-order-btn">Order Now</a><button class="hamburger" id="hamburger"><span></span><span></span><span></span></button></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-link">Home</a><a href="shop.html" class="mobile-link">Shop</a><a href="gallery.html" class="mobile-link">Gallery</a><a href="events.html" class="mobile-link">Events & Food Truck</a><a href="about.html" class="mobile-link">About</a><a href="contact.html" class="mobile-link">Order Info</a><a href="contact.html" class="btn btn-primary mobile-cta">Order Now</a></div>
+</header>
+
+<section class="page-intro section">
+  <div class="container">
+    <div class="page-intro-inner fade-in">
+      <p class="section-eyebrow">✦ Let's Get Baking ✦</p>
+      <h1 class="page-title">Order Info &amp; Contact</h1>
+      <p>Ready to place an order or book us for an event? Fill out the form below and Kelsey will get back to you within 24 hours. Can't wait? Email directly at <a href="mailto:sctreatsshop@gmail.com" class="text-link">sctreatsshop@gmail.com</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- ORDER FORM -->
+      <div class="contact-form-col fade-in" id="order">
+        <div class="form-card">
+          <h2>Place an Order</h2>
+          <p>Tell us what you'd like — we'll confirm details, pricing, and your pickup time.</p>
+
+          <form class="order-form" id="orderForm" name="sweet-confections-order" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+            <!-- Netlify needs this hidden field to identify the form -->
+            <input type="hidden" name="form-name" value="sweet-confections-order" />
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Jane" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+            </div>
+
+            <!-- Honeypot: hidden from real users, bots fill it in -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="bot-field">Leave this empty</label>
+              <input type="text" id="bot-field" name="bot-field" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(413) 555-0100" />
+            </div>
+
+            <div class="form-group">
+              <label for="orderType">What are you ordering? *</label>
+              <select id="orderType" name="orderType" required>
+                <option value="">Select an option...</option>
+                <option value="custom-cake">Custom Cake</option>
+                <option value="cupcakes">Cupcakes</option>
+                <option value="cookies">Cookies / Sugar Cookies</option>
+                <option value="brownies">Brownies</option>
+                <option value="cinnamon-rolls">Cinnamon Rolls</option>
+                <option value="pastry-box">Assorted Pastry Box</option>
+                <option value="event-package">Event / Wedding Package</option>
+                <option value="cake-bar">Build-Your-Own Cake Bar</option>
+                <option value="other">Other / Custom Request</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="pickupDate">Desired Pickup / Event Date *</label>
+              <input type="date" id="pickupDate" name="pickupDate" required />
+            </div>
+
+            <div class="form-group">
+              <label for="orderDetails">Order Details &amp; Special Instructions *</label>
+              <textarea id="orderDetails" name="orderDetails" rows="5" placeholder="Tell us everything! Flavors, design ideas, number of servings, allergies, themes, inscriptions — the more detail the better." required></textarea>
+            </div>
+
+            <div class="allergy-notice">
+              <span class="allergy-icon">⚠️</span>
+              <div>
+                <strong>Allergy Notice</strong>
+                <p>All items are baked in a licensed home kitchen that handles wheat, eggs, dairy, soy, tree nuts, and peanuts. Cross-contact is possible. Please list any allergies or dietary restrictions in your order details above.</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="howHeard">How did you hear about us?</label>
+              <select id="howHeard" name="howHeard">
+                <option value="">Select...</option>
+                <option value="facebook">Facebook</option>
+                <option value="instagram">Instagram</option>
+                <option value="word-of-mouth">Word of Mouth</option>
+                <option value="google">Google Search</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="cart-summary-box" id="cartSummaryBox" style="display:none">
+              <h4>Items from your cart:</h4>
+              <div id="formCartItems"></div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-full btn-lg">Send Order Request →</button>
+            <p class="form-note">📝 This sends your request directly to Kelsey. She'll confirm details and pricing within 24 hours. Payment is arranged at pickup/delivery.</p>
+          </form>
+
+          <div class="form-success" id="formSuccess" style="display:none">
+            <span class="success-icon">🎉</span>
+            <h3>Order Request Sent!</h3>
+            <p>Kelsey will be in touch within 24 hours to confirm your order details and pricing. She can't wait to bake for you!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SIDEBAR INFO -->
+      <div class="contact-info-col fade-in">
+
+        <!-- Event Form Anchor -->
+        <div id="event"></div>
+
+        <div class="info-card">
+          <h3>📍 Pickup & Delivery</h3>
+          <p>Pickup in Pittsfield, MA 01201</p>
+          <p class="info-note">Exact pickup address provided upon order confirmation. Delivery available across the Berkshires, Western MA, Eastern NY, Southern VT & Northwest CT (roughly a 1–2 hour radius) — just ask when you reach out!</p>
+        </div>
+
+        <div class="info-card">
+          <h3>⏰ Order Lead Times</h3>
+          <ul class="info-list">
+            <li><strong>Cookies, brownies, pastries:</strong> 24–48 hours</li>
+            <li><strong>Cupcakes:</strong> 24–48 hours</li>
+            <li><strong>Custom cakes:</strong> at least 1 week</li>
+            <li><strong>Wedding / event cakes:</strong> 2–4 weeks</li>
+            <li><strong>Event packages:</strong> 2–4 weeks</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <h3>📞 Contact Kelsey Directly</h3>
+          <a href="mailto:sctreatsshop@gmail.com" class="contact-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            sctreatsshop@gmail.com
+          </a>
+          <a href="https://www.facebook.com/SweetConfectionsShop/" target="_blank" rel="noopener" class="contact-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            Facebook: SweetConfectionsShop
+          </a>
+          <a href="https://www.instagram.com/sctreatsbakery/" target="_blank" rel="noopener" class="contact-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+            Instagram: @sctreatsbakery
+          </a>
+        </div>
+
+        <div class="info-card highlight-card">
+          <h3>🚐 Food Truck — Coming Soon!</h3>
+          <p>Kelsey is actively working toward launching a dessert food truck for events across the Berkshires (target launch 2026). It's not rolling just yet — but she'd still love to cater your wedding, party, or festival with a custom dessert package.</p>
+          <p><strong>Tell us about your event</strong> in the order form and select "Event / Wedding Package" — she'll reach out to discuss options!</p>
+          <a href="#order" class="btn btn-primary btn-full" onclick="document.getElementById('orderType').value='event-package'">Start Event Inquiry →</a>
+        </div>
+
+        <div class="info-card">
+          <h3>💳 How Payment Works</h3>
+          <p class="info-note">Once Kelsey confirms your order details and final price, she'll send you a secure payment link. A 50% deposit may be required for custom cakes, weddings, and event packages.</p>
+          <p class="payment-methods-label"><strong>Accepted methods:</strong></p>
+          <div class="payment-methods">
+            <a href="https://venmo.com/u/Kelsey-Hecht92" target="_blank" rel="noopener" class="payment-link payment-venmo">
+              <span class="payment-icon">💜</span>
+              <div>
+                <strong>Venmo</strong>
+                <span>@Kelsey-Hecht92</span>
+              </div>
+            </a>
+            <a href="https://cash.app/$KelseyHecht92" target="_blank" rel="noopener" class="payment-link payment-cashapp">
+              <span class="payment-icon">💚</span>
+              <div>
+                <strong>Cash App</strong>
+                <span>$KelseyHecht92</span>
+              </div>
+            </a>
+            <div class="payment-link payment-square">
+              <span class="payment-icon">💳</span>
+              <div>
+                <strong>Square</strong>
+                <span>Secure link sent after order confirmation</span>
+              </div>
+            </div>
+            <div class="payment-link payment-cash">
+              <span class="payment-icon">💵</span>
+              <div>
+                <strong>Cash</strong>
+                <span>Accepted at pickup</span>
+              </div>
+            </div>
+          </div>
+          <p class="payment-note">⚠️ <strong>Please don't send payment until Kelsey confirms your order</strong> and the total amount.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="footer-inner"><div class="footer-brand"><img src="/assets/logo-icon.png" alt="Sweet Confections by Kelsey" class="footer-logo-img" width="34" height="42" /><div><strong>Sweet Confections by Kelsey</strong><p>Based in Pittsfield, MA · Serving the Berkshires & surrounding areas · Fully Licensed & Insured</p></div></div><div class="footer-links"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="gallery.html">Gallery</a><a href="events.html">Events & Food Truck</a><a href="about.html">About</a><a href="contact.html">Order Info</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div><div class="footer-social"><a href="https://www.facebook.com/SweetConfectionsShop/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a><a href="https://www.instagram.com/sctreatsbakery/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a><a href="mailto:sctreatsshop@gmail.com" aria-label="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a></div><p class="footer-copy">© 2026 Sweet Confections by Kelsey · Made with 🤍 in Pittsfield, MA</p></div></footer>
+<div class="sticky-mobile-cta" id="stickyCta"><a href="#order" class="btn btn-primary btn-full">🎂 Place an Order</a></div>
+<div class="cart-drawer" id="cartDrawer" aria-hidden="true"><div class="cart-drawer-inner"><div class="cart-header"><h3>Your Order</h3><button class="cart-close" id="cartClose">✕</button></div><div class="cart-items" id="cartItems"><p class="cart-empty">Your cart is empty!</p></div><div class="cart-footer" id="cartFooter" style="display:none"><div class="cart-total"><span>Total</span><span id="cartTotal">$0</span></div><a href="contact.html" class="btn btn-primary btn-full">Proceed to Order →</a></div></div></div>
+<div class="cart-backdrop" id="cartBackdrop"></div>
+<script src="app.js"></script>
+<script data-pplx-inline-edit>
+(function(){
+  if(window===window.top)return;
+  function inlineAll(orig,clone){
+    if(orig.nodeType!==1)return;
+    try{
+      var cs=getComputedStyle(orig);
+      var t='';
+      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
+      clone.style.cssText=t;
+    }catch(e){}
+    var oc=orig.children,cc=clone.children;
+    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
+  }
+  function stripExternal(clone){
+    var imgs=clone.querySelectorAll('img');
+    for(var i=0;i<imgs.length;i++){
+      var s=imgs[i].getAttribute('src');
+      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
+    }
+    var all=clone.querySelectorAll('*');
+    for(var i=0;i<all.length;i++){
+      var st=all[i].style.cssText;
+      if(st&&st.indexOf('url(')>=0){
+        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
+      }
+    }
+  }
+  window.addEventListener('message',function(e){
+    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
+    var scrollX=window.scrollX||window.pageXOffset||0;
+    var scrollY=window.scrollY||window.pageYOffset||0;
+    var w=window.innerWidth,h=window.innerHeight;
+    try{
+      var clone=document.documentElement.cloneNode(true);
+      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
+      for(var i=0;i<rm.length;i++){rm[i].remove();}
+      inlineAll(document.documentElement,clone);
+      stripExternal(clone);
+      var html=new XMLSerializer().serializeToString(clone);
+      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
+        +'<foreignObject width="100%" height="100%">'
+        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
+        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
+        +html+'</div></div></foreignObject></svg>';
+      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+      var img=new Image();
+      img.onload=function(){
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        c.getContext('2d').drawImage(img,0,0);
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.onerror=function(){
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.src=svgUrl;
+    }catch(err){
+      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+    }
+  });
+})();
+</script></body>
+</html>

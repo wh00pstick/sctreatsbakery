@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — Sweet Confections by Kelsey</title>
+  <meta name="description" content="Browse all handmade treats from Sweet Confections by Kelsey. Custom cakes, cupcakes, cookies, brownies, cinnamon rolls, donuts and more." />
+  <link rel="canonical" href="https://sctreatsbakery.com/shop.html" />
+  <meta property="og:url" content="https://sctreatsbakery.com/shop.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Shop — Sweet Confections by Kelsey" />
+  <meta property="og:image" content="https://sctreatsbakery.com/assets/product-cake.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#c9748a" />
+</head>
+<body>
+
+<header class="nav-header" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="/assets/logo-full.png" alt="Sweet Confections by Kelsey — Fine Bakery" class="nav-logo-img" /><span class="logo-text">Sweet Confections</span></a>
+    <nav class="nav-links"><a href="index.html" class="nav-link">Home</a><a href="shop.html" class="nav-link active">Shop</a><a href="gallery.html" class="nav-link">Gallery</a><a href="events.html" class="nav-link">Events & Food Truck</a><a href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link">Order Info</a></nav>
+    <div class="nav-actions"><button class="cart-btn" id="cartBtn"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count" id="cartCount">0</span></button><a href="contact.html" class="btn btn-primary nav-order-btn">Order Now</a><button class="hamburger" id="hamburger"><span></span><span></span><span></span></button></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-link">Home</a><a href="shop.html" class="mobile-link">Shop</a><a href="gallery.html" class="mobile-link">Gallery</a><a href="events.html" class="mobile-link">Events & Food Truck</a><a href="about.html" class="mobile-link">About</a><a href="contact.html" class="mobile-link">Order Info</a><a href="contact.html" class="btn btn-primary mobile-cta">Order Now</a></div>
+</header>
+
+<!-- PAGE INTRO -->
+<section class="page-intro section">
+  <div class="container">
+    <div class="page-intro-inner fade-in">
+      <p class="section-eyebrow">✦ Fresh & Made to Order ✦</p>
+      <h1 class="page-title">Our Menu</h1>
+      <p>Everything is made from scratch in our licensed Pittsfield, MA kitchen. Place your order and allow 24–48 hours for preparation. Custom requests are always welcome — just ask!</p>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCY -->
+<div class="shop-notice">
+  <div class="container">
+    <p>⏰ <strong>Order 24–48 hours in advance</strong> · Limited quantities available daily · Custom cakes require additional lead time</p>
+  </div>
+</div>
+
+<!-- FILTER TABS -->
+<section class="shop-section section">
+  <div class="container">
+    <div class="filter-tabs fade-in" role="tablist">
+      <button class="filter-tab active" data-filter="all">All Treats</button>
+      <button class="filter-tab" data-filter="cakes">Cakes</button>
+      <button class="filter-tab" data-filter="cupcakes">Cupcakes</button>
+      <button class="filter-tab" data-filter="cookies">Cookies & Bars</button>
+      <button class="filter-tab" data-filter="pastries">Pastries & Breads</button>
+      <button class="filter-tab" data-filter="seasonal">Seasonal</button>
+    </div>
+
+    <div class="products-grid shop-grid" id="shopGrid">
+
+      <!-- CAKES -->
+      <article class="product-card fade-in" data-category="cakes">
+        <div class="product-img-wrap">
+          <img src="assets/real/birthday-cake-top.jpg" alt="Custom celebration cake" loading="lazy" />
+          <span class="product-badge popular">Most Popular</span>
+        </div>
+        <div class="product-info">
+          <h3>Custom Celebration Cake</h3>
+          <p>Made to order for any occasion — birthdays, anniversaries, baby showers, or just because. Pick your flavors, design, and size.</p>
+          <div class="product-footer">
+            <span class="price">From $55</span>
+            <button class="btn btn-sm btn-pink add-to-cart" data-product="custom-cake" data-price="55" data-name="Custom Celebration Cake">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card fade-in" data-category="cakes">
+        <div class="product-img-wrap">
+          <img src="assets/product-cake.jpg" alt="Elegant tiered wedding cake with smooth fondant finish for Berkshires celebrations" loading="lazy" />
+          <span class="product-badge freshly">Made to Order</span>
+        </div>
+        <div class="product-info">
+          <h3>Wedding &amp; Event Cake</h3>
+          <p>Multi-tier, fully custom wedding and event cakes. Beautiful florals, ribbons, and personalized designs available.</p>
+          <div class="product-footer">
+            <span class="price">From $120</span>
+            <button class="btn btn-sm btn-pink add-to-cart" data-product="wedding-cake" data-price="120" data-name="Wedding & Event Cake">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card fade-in" data-category="cakes">
+        <div class="product-img-wrap">
+          <img src="assets/real/ig-bee-cake.jpg" alt="Smash cake and cupcake set" loading="lazy" />
+          <span class="product-badge popular">Fan Favorite</span>
+        </div>
+        <div class="product-info">
+          <h3>Smash Cake + Cupcake Set</h3>
+          <p>The perfect first birthday package. A darling smash cake plus matching decorated cupcakes for guests.</p>
+          <div class="product-footer">
+            <span class="price">From $35</span>
+            <button class="btn btn-sm btn-pink add-to-cart" data-product="smash-cake" data-price="35" data-name="Smash Cake + Cupcake Set">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card fade-in" data-category="cakes">
+        <div class="product-img-wrap">
+          <img src="assets/real/ig-mermaid-cake.jpg" alt="Mermaid-themed birthday cake with shimmering scales and ocean-blue accents" loading="lazy" />
+        </div>
+        <div class="product-info">
+          <h3>Themed Character Cake</h3>
+          <p>Mermaids, superheroes, Mickey Mouse, sunflowers — bring your theme and Kelsey will bring it to life in cake form.</p>
+          <div class="product-footer">
+            <span class="price">From $65</span>
+            <button class="btn btn-sm btn-pink add-to-cart" data-product="themed-cake" data-price="65" data-name="Themed Character Cake">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- CUPCAKES -->
+      <article class="product-card fade-in" data-category="cupcakes">
+        <div class="product-img-wrap">
+          <img src="assets/real/floral-cupcakes-overhead.jpg" alt="Signature floral cupcakes" loading="lazy" />
+          <span class="product-badge popular">Best Seller</span>
+        </div>
+        <div class="product-info">
+          <h3>Signature Cupcakes</h3>
+          <p>Our signature decorated cupcakes available in a dozen varieties. Floral, themed, or classic — your call.</p>
+          <div class="product-footer">
+            <span class="price">$28 / dozen</span>
+            <button class="btn btn-sm btn-pink add-to-cart" data-product="cupcakes" data-price="28" data-name="Signature Cupcakes (Dozen)">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card fade-in" data-category="cupcakes">
+        <div class="product-img-wrap">
+          <img src="assets/product-cupcakes.jpg" alt="Cupcakes topped with swirled pink buttercream frosting and sprinkles" loading="lazy" />
+        </div>
+        <div class="product-info">
+          <h3>Classic Frosted Cupcakes</h3>
+          <p>Fluffy vanilla or chocolate cupcakes with generous swirls of buttercream frosting. Perfect for parties.</p>
+          <div class="product-footer">
+            <span class="price">$28 / dozen</span>
+            <button class="btn btn-sm btn-pink add-to-cart" data-product="classic-cupcakes" data-price="28" data-name="Classic Frosted Cupcakes (Dozen)">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card fade-in" data-category="cupcakes">
+        <div class="product-img-wrap">
+          <img src="assets/real/matcha-cupcakes.jpg" alt="Specialty matcha cupcakes" loading="lazy" />
+          <span class="product-badge limited">Specialty</span>
+        </div>
+        <div class="product-info">
+          <h3>Specialty Flavored Cupcakes</h3>
+          <p>Rotating seasonal and specialty flavors — matcha, red velvet, lemon, strawberry, and more. Ask what's available!</p>
+          <div class="product-footer">
+            <span class="price">$30 / dozen</span>
+            <button class="btn btn-sm btn-pink add-to-cart" data-product="specialty-cupcakes" data-price="30" data-name="Specialty Cupcakes (Dozen)">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- COOKIES & BARS -->
+      <article class="product-card fade-in" data-category="cookies">
+        <div class="product-img-wrap">
+          <img src="assets/product-cookies.jpg" alt="Chocolate chip cookies" loading="lazy" />
+          <span class="product-badge freshly">Freshly Made</span>
+        </div>
+        <div class="product-info">
+          <h3>Chocolate Chip Cookies</h3>
+          <p>Thick, chewy, loaded with real chocolate chips. Made from scratch — the kind that ruin you for store-bought forever.</p>
+          <div class="product-footer">
+            <span class="price">$18 / dozen</span>
+            <button class="btn btn-sm btn-pink add-to-cart" data-product="cookies" data-price="18" data-name="Chocolate Chip Cookies (Dozen)">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card fade-in" data-category="pastries">
+        <div class="product-img-wrap">
+          <img src="assets/real/sugar-cookies.jpg" alt="Fresh-baked Apple Spice and Pumpkin Spice donuts dusted with cinnamon sugar" loading="lazy" />
+        </div>
+        <div class="product-info">
+          <h3>Seasonal Donuts</h3>
+          <p>Apple Spice and Pumpkin Spice donuts — soft, cinnamon-sugar dusted, baked fresh in small batches. Perfect for cool-weather mornings.</p>
+          <div class="product-footer">
+            <span class="price">$22 / dozen</span>
+            <button class="btn btn-sm btn-pink add-to-cart" data-product="donuts" data-price="22" data-name="Seasonal Donuts (Dozen)">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card fade-in" data-category="cookies">
+        <div class="product-img-wrap">
+          <img src="assets/product-brownies.jpg" alt="Fudgy brownies" loading="lazy" />
+        </div>
+        <div class="product-info">
+          <h3>Fudgy Brownies</h3>
+          <p>Dense, rich, and intensely chocolatey. Classic and Dubai-style (pistachio cream) available.</p>
+          <div class="product-footer">
+            <span class="price">$20 / half-dozen</span>
+            <button class="btn btn-sm btn-pink add-to-cart" data-product="brownies" data-price="20" data-name="Fudgy Brownies (Half Dozen)">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card fade-in" data-category="cookies">
+        <div class="product-img-wrap">
+          <img src="assets/real/strawberry-box.jpg" alt="Gift box of chocolate-dipped strawberries with drizzled white chocolate accents" loading="lazy" />
+          <span class="product-badge popular">Fan Fave</span>
+        </div>
+        <div class="product-info">
+          <h3>Chocolate-Dipped Strawberries</h3>
+          <p>Juicy fresh strawberries hand-dipped in chocolate with beautiful decorative drizzle. A crowd pleaser every time.</p>
+          <div class="product-footer">
+            <span class="price">$18 / half-dozen</span>
+            <button class="btn btn-sm btn-pink add-to-cart" data-product="strawberries" data-price="18" data-name="Chocolate-Dipped Strawberries">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- PASTRIES & BREADS -->
+      <article class="product-card fade-in" data-category="pastries">
+        <div class="product-img-wrap">
+          <img src="assets/real/cinnamon-roll.jpg" alt="Homemade cinnamon roll" loading="lazy" />
+          <span class="product-badge limited">Sells Out Daily</span>
+        </div>
+        <div class="product-info">
+          <h3>Cinnamon Rolls</h3>
+          <p>Soft, pillowy, glazed to golden perfection. Made fresh in small batches — order early, these sell out fast.</p>
+          <div class="product-footer">
+            <span class="price">$6 each / $32 half-doz</span>
+            <button class="btn btn-sm btn-pink add-to-cart" data-product="cinnamon-roll" data-price="6" data-name="Cinnamon Roll">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card fade-in" data-category="pastries">
+        <div class="product-img-wrap">
+          <img src="assets/real/muffins.jpg" alt="Fresh baked muffins and pastries" loading="lazy" />
+        </div>
+        <div class="product-info">
+          <h3>Assorted Pastries Box</h3>
+          <p>A curated box of seasonal pastries — babka, turnovers, crumb cake, and more. Rotating selection, always fresh.</p>
+          <div class="product-footer">
+            <span class="price">From $28 / box</span>
+            <button class="btn btn-sm btn-pink add-to-cart" data-product="pastry-box" data-price="28" data-name="Assorted Pastries Box">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card fade-in" data-category="pastries">
+        <div class="product-img-wrap">
+          <img src="assets/product-muffins.jpg" alt="Fresh baked blueberry and chocolate chip muffins" loading="lazy" />
+          <span class="product-badge">New</span>
+        </div>
+        <div class="product-info">
+          <h3>Fresh Baked Muffins</h3>
+          <p>Bakery-style muffins with golden domed tops and sugar crumble. Blueberry, chocolate chip, and rotating seasonal flavors — baked in small batches daily.</p>
+          <div class="product-footer">
+            <span class="price">$4 each / $22 half-doz</span>
+            <button class="btn btn-sm btn-pink add-to-cart" data-product="muffins" data-price="4" data-name="Fresh Baked Muffins">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card fade-in" data-category="pastries">
+        <div class="product-img-wrap">
+          <img src="assets/product-bagels.jpg" alt="Freshly baked everything and plain bagels with cream cheese" loading="lazy" />
+          <span class="product-badge">New</span>
+        </div>
+        <div class="product-info">
+          <h3>Homemade Bagels</h3>
+          <p>Hand-rolled, boiled, and baked bagels with a perfectly chewy crust. Everything, plain, sesame, and more. Served with cream cheese — perfect for weekend mornings.</p>
+          <div class="product-footer">
+            <span class="price">$3 each / $16 half-doz</span>
+            <button class="btn btn-sm btn-pink add-to-cart" data-product="bagels" data-price="3" data-name="Homemade Bagels">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- SEASONAL -->
+      <article class="product-card fade-in" data-category="seasonal">
+        <div class="product-img-wrap">
+          <img src="assets/real/bear-cupcakes.jpg" alt="Cupcakes decorated as cuddly bears with buttercream ears and chocolate features" loading="lazy" />
+          <span class="product-badge limited">Seasonal</span>
+        </div>
+        <div class="product-info">
+          <h3>Seasonal Specialty Cupcakes</h3>
+          <p>Holiday and seasonal special edition cupcakes. Easter, Halloween, Thanksgiving, Christmas — follow @sctreatsbakery to see what's next!</p>
+          <div class="product-footer">
+            <span class="price">$30 / dozen</span>
+            <button class="btn btn-sm btn-pink add-to-cart" data-product="seasonal-cupcakes" data-price="30" data-name="Seasonal Specialty Cupcakes">Add to Cart</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- EVERYDAY MENU -->
+    <div class="flavor-menu fade-in" id="everyday-menu">
+      <div class="tier-header">
+        <p class="section-eyebrow">✦ What Kelsey's Baking ✦</p>
+        <h3 class="tier-title">The Everyday <em>Menu</em></h3>
+        <p class="tier-sub">Kelsey's go-to signature flavors — mix, match, and order whatever speaks to you. Custom requests always welcome.</p>
+      </div>
+
+      <div class="flavor-grid">
+
+        <div class="flavor-col">
+          <h4>🧁 Cupcake / Cake Flavors</h4>
+          <ul>
+            <li>Chocolate / Vanilla / Strawberry</li>
+            <li>Lemon Raspberry</li>
+            <li>Chocolate Nutella Strawberry</li>
+            <li>Chocolate Dubai</li>
+            <li>Chocolate Peanut Butter</li>
+            <li>Cookies and Cream</li>
+            <li>Chocolate Nutella Cookie Butter</li>
+            <li>Strawberry Crunch</li>
+            <li>Spiced Caramel Apple Crumble</li>
+            <li>Carrot Cake</li>
+            <li>Red Velvet</li>
+            <li>Funfetti</li>
+            <li>Cinnamon Bun</li>
+          </ul>
+        </div>
+
+        <div class="flavor-col">
+          <h4>🍪 Cookies, Bars &amp; More</h4>
+          <ul>
+            <li>Chocolate Chip Cookies</li>
+            <li>Banana White Chocolate Chip</li>
+            <li>Pecan Pie Bars</li>
+            <li>Banana Chocolate Chip Muffins</li>
+            <li>Oatmeal Cream Pies</li>
+            <li>Brownies</li>
+            <li>Blueberry Muffins</li>
+            <li>Apple Spice Donuts</li>
+            <li>Pumpkin Spice Donuts</li>
+            <li>Pumpkin Roll</li>
+          </ul>
+
+          <h4 class="flavor-subhead">🥐 Cinnamon Bun Flavors</h4>
+          <ul>
+            <li>Original</li>
+            <li>Apple</li>
+            <li>Maple Bacon</li>
+            <li>Banana</li>
+            <li>Blueberry</li>
+            <li>Raspberry</li>
+          </ul>
+        </div>
+
+        <div class="flavor-col">
+          <h4>🎂 Custom Cake Flavors</h4>
+          <p class="flavor-col-note">Use these for custom cakes &amp; the Cake Bar:</p>
+          <ul>
+            <li>Vanilla</li>
+            <li>Chocolate</li>
+            <li>Funfetti</li>
+            <li>Lemon</li>
+            <li>Strawberry</li>
+            <li>Red Velvet</li>
+            <li>Lemon Raspberry</li>
+            <li>Lemon Blueberry</li>
+            <li>Pumpkin</li>
+            <li>Apple</li>
+            <li>Carrot</li>
+            <li>Mocha</li>
+            <li>Banana Bread</li>
+            <li>Spice Cake</li>
+          </ul>
+
+          <h4 class="flavor-subhead">🌾 Gluten-Free Cakes</h4>
+          <ul>
+            <li>Chocolate</li>
+            <li>Vanilla</li>
+            <li>Lemon Raspberry</li>
+            <li>Lemon Blueberry</li>
+            <li>Cookies and Cream</li>
+            <li>Red Velvet</li>
+            <li>Carrot Cake</li>
+            <li>Pumpkin</li>
+            <li>Chocolate Peanut Butter</li>
+            <li>Strawberry Crunch</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="flavor-note">🌾 <strong>Gluten-free available upon request</strong> for an additional charge. Don't see your dream flavor? Send Kelsey a message — she loves a custom challenge!</p>
+    </div>
+
+    <!-- ALLERGY NOTICE -->
+    <div class="allergy-notice fade-in">
+      <span class="allergy-icon">⚠️</span>
+      <div>
+        <strong>Allergy & Food Safety Notice</strong>
+        <p>All items are baked in a licensed home kitchen that handles <strong>wheat, eggs, dairy, soy, tree nuts, peanuts</strong>, and other common allergens. Cross-contact is possible. Please disclose any allergies or dietary restrictions when you order so Kelsey can advise — some custom accommodations may be available with sufficient notice.</p>
+      </div>
+    </div>
+
+    <!-- CUSTOM ORDER CTA -->
+    <div class="custom-order-cta fade-in">
+      <div class="custom-order-inner">
+        <span class="custom-order-icon">✨</span>
+        <div>
+          <h3>Don't see what you're looking for?</h3>
+          <p>Kelsey loves a challenge! Send us your custom request — flavors, designs, themes, dietary needs — and we'll make it happen.</p>
+        </div>
+        <a href="contact.html" class="btn btn-primary">Request Custom Order</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer"><div class="footer-inner"><div class="footer-brand"><img src="/assets/logo-icon.png" alt="Sweet Confections by Kelsey" class="footer-logo-img" width="34" height="42" /><div><strong>Sweet Confections by Kelsey</strong><p>Based in Pittsfield, MA · Serving the Berkshires & surrounding areas · Fully Licensed & Insured</p></div></div><div class="footer-links"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="gallery.html">Gallery</a><a href="events.html">Events & Food Truck</a><a href="about.html">About</a><a href="contact.html">Order Info</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div><div class="footer-social"><a href="https://www.facebook.com/SweetConfectionsShop/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a><a href="https://www.instagram.com/sctreatsbakery/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a><a href="mailto:sctreatsshop@gmail.com" aria-label="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a></div><p class="footer-copy">© 2026 Sweet Confections by Kelsey · Made with 🤍 in Pittsfield, MA</p></div></footer>
+
+<div class="sticky-mobile-cta" id="stickyCta"><a href="contact.html" class="btn btn-primary btn-full">🎂 Order Now</a></div>
+<div class="cart-drawer" id="cartDrawer" aria-hidden="true"><div class="cart-drawer-inner"><div class="cart-header"><h3>Your Order</h3><button class="cart-close" id="cartClose">✕</button></div><div class="cart-items" id="cartItems"><p class="cart-empty">Your cart is empty!</p></div><div class="cart-footer" id="cartFooter" style="display:none"><div class="cart-total"><span>Total</span><span id="cartTotal">$0</span></div><a href="contact.html" class="btn btn-primary btn-full">Proceed to Order →</a></div></div></div>
+<div class="cart-backdrop" id="cartBackdrop"></div>
+<script src="app.js"></script>
+<script data-pplx-inline-edit>
+(function(){
+  if(window===window.top)return;
+  function inlineAll(orig,clone){
+    if(orig.nodeType!==1)return;
+    try{
+      var cs=getComputedStyle(orig);
+      var t='';
+      for(var i=0;i<cs.length;i++){t+=cs[i]+':'+cs.getPropertyValue(cs[i])+';';}
+      clone.style.cssText=t;
+    }catch(e){}
+    var oc=orig.children,cc=clone.children;
+    for(var j=0;j<oc.length&&j<cc.length;j++){inlineAll(oc[j],cc[j]);}
+  }
+  function stripExternal(clone){
+    var imgs=clone.querySelectorAll('img');
+    for(var i=0;i<imgs.length;i++){
+      var s=imgs[i].getAttribute('src');
+      if(s&&!s.startsWith('data:'))imgs[i].removeAttribute('src');
+    }
+    var all=clone.querySelectorAll('*');
+    for(var i=0;i<all.length;i++){
+      var st=all[i].style.cssText;
+      if(st&&st.indexOf('url(')>=0){
+        all[i].style.cssText=st.replace(/url\(["']?(?!data:)[^)"']*["']?\)/gi,'none');
+      }
+    }
+  }
+  window.addEventListener('message',function(e){
+    if(!e.data||e.data.type!=='INLINE_EDIT_CAPTURE_REQUEST')return;
+    var scrollX=window.scrollX||window.pageXOffset||0;
+    var scrollY=window.scrollY||window.pageYOffset||0;
+    var w=window.innerWidth,h=window.innerHeight;
+    try{
+      var clone=document.documentElement.cloneNode(true);
+      var rm=clone.querySelectorAll('script,link[rel="stylesheet"],style');
+      for(var i=0;i<rm.length;i++){rm[i].remove();}
+      inlineAll(document.documentElement,clone);
+      stripExternal(clone);
+      var html=new XMLSerializer().serializeToString(clone);
+      var svg='<svg xmlns="http://www.w3.org/2000/svg" width="'+w+'" height="'+h+'">'
+        +'<foreignObject width="100%" height="100%">'
+        +'<div xmlns="http://www.w3.org/1999/xhtml" style="width:'+w+'px;height:'+h+'px;overflow:hidden">'
+        +'<div style="transform:translate(-'+scrollX+'px,-'+scrollY+'px);transform-origin:top left">'
+        +html+'</div></div></foreignObject></svg>';
+      var svgUrl='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+      var img=new Image();
+      img.onload=function(){
+        var c=document.createElement('canvas');c.width=w;c.height=h;
+        c.getContext('2d').drawImage(img,0,0);
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:c.toDataURL('image/png'),scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.onerror=function(){
+        window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+      };
+      img.src=svgUrl;
+    }catch(err){
+      window.parent.postMessage({type:'INLINE_EDIT_SCREENSHOT_RESULT',dataUrl:null,scrollX:scrollX,scrollY:scrollY},'*');
+    }
+  });
+})();
+</script></body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — Sweet Confections by Kelsey</title>
+  <meta name="description" content="Browse Kelsey's portfolio of handcrafted cakes, cupcakes, cookies, and custom creations from Sweet Confections." />
+  <link rel="canonical" href="https://sctreatsbakery.com/gallery.html" />
+  <meta property="og:url" content="https://sctreatsbakery.com/gallery.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gallery — Sweet Confections by Kelsey" />
+  <meta property="og:image" content="https://sctreatsbakery.com/assets/cake-bar.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#c9748a" />
+</head>
+<body>
+
+<header class="nav-header" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="/assets/logo-full.png" alt="Sweet Confections by Kelsey — Fine Bakery" class="nav-logo-img" /><span class="logo-text">Sweet Confections</span></a>
+    <nav class="nav-links"><a href="index.html" class="nav-link">Home</a><a href="shop.html" class="nav-link">Shop</a><a href="gallery.html" class="nav-link active">Gallery</a><a href="events.html" class="nav-link">Events & Food Truck</a><a href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link">Order Info</a></nav>
+    <div class="nav-actions"><a href="contact.html" class="btn btn-primary nav-order-btn">Order Now</a><button class="hamburger" id="hamburger"><span></span><span></span><span></span></button></div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-link">Home</a><a href="shop.html" class="mobile-link">Shop</a><a href="gallery.html" class="mobile-link">Gallery</a><a href="events.html" class="mobile-link">Events & Food Truck</a><a href="about.html" class="mobile-link">About</a><a href="contact.html" class="mobile-link">Order Info</a><a href="contact.html" class="btn btn-primary mobile-cta">Order Now</a></div>
+</header>
+
+<!-- PAGE INTRO -->
+<section class="page-intro section gallery-intro">
+  <div class="container">
+    <div class="page-intro-inner fade-in">
+      <p class="section-eyebrow">✦ Portfolio ✦</p>
+      <h1 class="page-title">The Sweet <em>Gallery</em></h1>
+      <p>Every cake tells a story. Every cupcake gets the same care and creativity. Browse Kelsey's portfolio — weddings, birthdays, showers, custom creations — and get inspired for your next celebration.</p>
+      <div class="gallery-stats">
+        <div class="gallery-stat"><strong id="galleryCount">—</strong><span>Sweet Creations</span></div>
+        <div class="gallery-stat"><strong>100%</strong><span>From Scratch</span></div>
+        <div class="gallery-stat"><strong>★★★★★</strong><span>Every Order</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY GRID -->
+<section class="gallery-section">
+  <div class="container">
+    <div id="galleryGrid" class="gallery-masonry"></div>
+    <div class="gallery-end fade-in">
+      <p>Love what you see? Kelsey would love to create something just for you.</p>
+      <a href="contact.html" class="btn btn-primary btn-lg">Start Your Order →</a>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog">
+  <button class="lightbox-close" id="lbClose" aria-label="Close">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Previous">‹</button>
+  <button class="lightbox-nav lightbox-next" id="lbNext" aria-label="Next">›</button>
+  <div class="lightbox-content">
+    <img id="lbImage" src="" alt="" />
+    <p class="lightbox-counter" id="lbCounter"></p>
+  </div>
+</div>
+
+<footer class="footer"><div class="footer-inner"><div class="footer-brand"><img src="/assets/logo-icon.png" alt="Sweet Confections by Kelsey" class="footer-logo-img" width="34" height="42" /><div><strong>Sweet Confections by Kelsey</strong><p>Based in Pittsfield, MA · Serving the Berkshires & surrounding areas · Fully Licensed & Insured</p></div></div><div class="footer-links"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="gallery.html">Gallery</a><a href="events.html">Events & Food Truck</a><a href="about.html">About</a><a href="contact.html">Order Info</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div><p class="footer-copy">© 2026 Sweet Confections by Kelsey · Made with 🤍 in Pittsfield, MA</p></div></footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var TOTAL = 162;
+  var grid = document.getElementById('galleryGrid');
+  var countEl = document.getElementById('galleryCount');
+  if (!grid) return;
+  if (countEl) countEl.textContent = TOTAL + '+';
+
+  // Build gallery items
+  var frag = document.createDocumentFragment();
+  for (var i = 1; i <= TOTAL; i++) {
+    var num = String(i).padStart(3, '0');
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'gallery-item';
+    btn.setAttribute('data-index', i - 1);
+    btn.setAttribute('aria-label', 'Open photo ' + i);
+    var img = document.createElement('img');
+    img.src = 'assets/gallery/sweet-' + num + '.jpg';
+    img.alt = 'Sweet Confections creation #' + i;
+    img.loading = 'lazy';
+    btn.appendChild(img);
+    frag.appendChild(btn);
+  }
+  grid.appendChild(frag);
+
+  // Lightbox
+  var lb = document.getElementById('lightbox');
+  var lbImage = document.getElementById('lbImage');
+  var lbCounter = document.getElementById('lbCounter');
+  var currentIndex = 0;
+
+  function openLb(i) {
+    currentIndex = ((i % TOTAL) + TOTAL) % TOTAL;
+    var num = String(currentIndex + 1).padStart(3, '0');
+    lbImage.src = 'assets/gallery/sweet-' + num + '.jpg';
+    lbImage.alt = 'Sweet Confections creation #' + (currentIndex + 1);
+    lbCounter.textContent = (currentIndex + 1) + ' / ' + TOTAL;
+    lb.classList.add('active');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLb() {
+    lb.classList.remove('active');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  grid.addEventListener('click', function(e){
+    var b = e.target.closest('.gallery-item');
+    if (!b) return;
+    e.preventDefault();
+    openLb(parseInt(b.dataset.index, 10));
+  });
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  document.getElementById('lbPrev').addEventListener('click', function(){ openLb(currentIndex - 1); });
+  document.getElementById('lbNext').addEventListener('click', function(){ openLb(currentIndex + 1); });
+  lb.addEventListener('click', function(e){ if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function(e){
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLb();
+    else if (e.key === 'ArrowLeft') openLb(currentIndex - 1);
+    else if (e.key === 'ArrowRight') openLb(currentIndex + 1);
+  });
+});
+</script>
+<script src="app.js"></script>
+</body>
+</html>

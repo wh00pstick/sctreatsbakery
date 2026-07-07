@@ -1,0 +1,28 @@
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (if we ever add build tooling)
+node_modules/
+npm-debug.log*
+
+# Netlify
+.netlify/
+
+# Local dev
+*.log
+.env
+.env.local
+
+# Preview/scratch files
+logo-preview.html
+
+# Claude Code session state
+.claude/
