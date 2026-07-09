@@ -10,13 +10,20 @@
      1. CART SYSTEM
      Persisted in sessionStorage so it survives page navigation.
   ---------------------------------------------------------- */
-  // Cart stored in memory — persists during the session
-  // (uses a shared global so it survives soft navigations if pages are open in the same tab)
-  if (!window._scCart) window._scCart = [];
-  var cart = window._scCart;
+  var CART_KEY = 'scCart';
+  var cart;
+  try {
+    cart = JSON.parse(sessionStorage.getItem(CART_KEY)) || [];
+  } catch (e) {
+    cart = [];
+  }
+  if (!Array.isArray(cart)) cart = [];
 
   function saveCart(updatedCart) {
-    window._scCart = updatedCart;
+    // sessionStorage can throw in private browsing — the cart still works within the page
+    try {
+      sessionStorage.setItem(CART_KEY, JSON.stringify(updatedCart));
+    } catch (e) {}
   }
 
   function getCartCount() {
@@ -70,6 +77,7 @@
     }
 
     saveCart(cart);
+    updateFormCartSummary();
   }
 
   function addToCart(product, name, price) {
@@ -323,6 +331,38 @@
   var orderForm = document.getElementById('orderForm');
   var formSuccess = document.getElementById('formSuccess');
 
+  // Mirror the cart into the hidden #cartSummary field (submitted to Netlify)
+  // and the visible #cartSummaryBox. Runs via updateCartUI on every cart change.
+  function updateFormCartSummary() {
+    var cartSummaryField = document.getElementById('cartSummary');
+    var summaryBox = document.getElementById('cartSummaryBox');
+    var formCartItems = document.getElementById('formCartItems');
+    if (!cartSummaryField && !summaryBox) return;
+
+    if (cart.length === 0) {
+      if (cartSummaryField) cartSummaryField.value = '';
+      if (formCartItems) formCartItems.textContent = '';
+      if (summaryBox) summaryBox.style.display = 'none';
+      return;
+    }
+
+    var summaryLines = cart.map(function (item) {
+      return item.name + ' x' + item.qty + ' ($' + (item.price * item.qty).toFixed(0) + ')';
+    });
+    summaryLines.push('Total: $' + getCartTotal().toFixed(0));
+
+    if (cartSummaryField) cartSummaryField.value = summaryLines.join('\n');
+    if (formCartItems) {
+      formCartItems.textContent = '';
+      summaryLines.forEach(function (line) {
+        var div = document.createElement('div');
+        div.textContent = line;
+        formCartItems.appendChild(div);
+      });
+    }
+    if (summaryBox) summaryBox.style.display = '';
+  }
+
   if (orderForm) {
     // JS is available, so take over validation from the browser to show
     // friendly inline messages. No-JS visitors keep native HTML5 checks.
@@ -407,7 +447,7 @@
       }
     }
 
-    var validatedFields = orderForm.querySelectorAll('input:not([type="hidden"]):not([name="bot-field"]), select, textarea');
+    var validatedFields = orderForm.querySelectorAll('input:not([type="hidden"]):not([name="bot-field"]), select, textarea:not(#cartSummary)');
     validatedFields.forEach(function (field) {
       // Only flag on blur when the field has content ("reward early,
       // punish late") — empty required fields get caught on submit.
@@ -419,16 +459,6 @@
       field.addEventListener('input', function () { clearFieldError(field); });
       field.addEventListener('change', function () { clearFieldError(field); });
     });
-
-    // If there's a cart summary field, populate it
-    var cartSummaryField = document.getElementById('cartSummary');
-    if (cartSummaryField && cart.length > 0) {
-      var summaryLines = cart.map(function (item) {
-        return item.name + ' x' + item.qty + ' ($' + (item.price * item.qty).toFixed(0) + ')';
-      });
-      summaryLines.push('Total: $' + getCartTotal().toFixed(0));
-      cartSummaryField.value = summaryLines.join('\n');
-    }
 
     orderForm.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -482,7 +512,6 @@
         }
         // Clear the cart
         cart.length = 0;
-        window._scCart = cart;
         updateCartUI();
       })
       .catch(function () {

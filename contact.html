@@ -128,6 +128,8 @@
               </select>
             </div>
 
+            <!-- Must exist in static HTML so Netlify Forms registers the field; app.js fills it from the cart -->
+            <textarea id="cartSummary" name="cartSummary" style="display:none"></textarea>
             <div class="cart-summary-box" id="cartSummaryBox" style="display:none">
               <h4>Items from your cart:</h4>
               <div id="formCartItems"></div>
