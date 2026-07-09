@@ -733,6 +733,8 @@ input, select, textarea { font: inherit; color: inherit; }
 /* .field-error borders come from the runtime styles app.js injects */
 .field-error-msg { font-size: var(--text-sm); color: #b8405e; margin: 0; }
 .field-error-msg:empty { display: none; }
+.field-hint { font-size: var(--text-xs); color: var(--text-faint); margin: 0; }
+.cart-estimate-note { font-size: var(--text-xs); color: var(--text-faint); margin: 0 0 var(--space-3); }
 .form-note { font-size: var(--text-xs); color: var(--text-faint); text-align: center; max-width: none; }
 .form-success { text-align: center; padding: var(--space-10) var(--space-6); }
 .success-icon { font-size: 3rem; display: block; margin-bottom: var(--space-4); }

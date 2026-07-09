@@ -394,7 +394,8 @@
         msg.id = field.id + '-error';
         var group = field.closest('.form-group') || field.parentElement;
         group.appendChild(msg);
-        field.setAttribute('aria-describedby', msg.id);
+        var describedBy = field.getAttribute('aria-describedby');
+        field.setAttribute('aria-describedby', describedBy ? describedBy + ' ' + msg.id : msg.id);
       }
       msg.textContent = message;
     }
@@ -445,6 +446,26 @@
         default:
           return (field.hasAttribute('required') && !v) ? 'This field is required.' : '';
       }
+    }
+
+    // Lead-time hint under the date field follows the selected order type
+    var orderTypeField = document.getElementById('orderType');
+    var pickupHint = document.getElementById('pickupDateHint');
+    if (orderTypeField && pickupHint) {
+      var defaultHint = pickupHint.textContent;
+      var LEAD_TIMES = {
+        'custom-cake': 'Custom cakes need about 1 week of lead time.',
+        'event-package': 'Wedding & event packages need 2–4 weeks of lead time.',
+        'cake-bar': 'Cake bar bookings need 2–4 weeks of lead time.',
+        'cupcakes': 'Cupcakes need 24–48 hours notice.',
+        'cookies': 'Cookies need 24–48 hours notice.',
+        'brownies': 'Brownies need 24–48 hours notice.',
+        'cinnamon-rolls': 'Cinnamon rolls need 24–48 hours notice.',
+        'pastry-box': 'Pastry boxes need 24–48 hours notice.'
+      };
+      orderTypeField.addEventListener('change', function () {
+        pickupHint.textContent = LEAD_TIMES[orderTypeField.value] || defaultHint;
+      });
     }
 
     var validatedFields = orderForm.querySelectorAll('input:not([type="hidden"]):not([name="bot-field"]), select, textarea:not(#cartSummary)');
