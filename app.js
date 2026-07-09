@@ -324,6 +324,102 @@
   var formSuccess = document.getElementById('formSuccess');
 
   if (orderForm) {
+    // JS is available, so take over validation from the browser to show
+    // friendly inline messages. No-JS visitors keep native HTML5 checks.
+    orderForm.setAttribute('novalidate', 'novalidate');
+
+    // Orders need 24-48h notice: constrain the native date picker too.
+    // Build YYYY-MM-DD from local parts — toISOString() is UTC and can
+    // land on the wrong day for evening visitors.
+    function localISO(d) {
+      return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    }
+    var pickupField = document.getElementById('pickupDate');
+    if (pickupField) {
+      var minDay = new Date();
+      minDay.setDate(minDay.getDate() + 1);
+      pickupField.min = localISO(minDay);
+      var maxDay = new Date();
+      maxDay.setFullYear(maxDay.getFullYear() + 2);
+      pickupField.max = localISO(maxDay);
+    }
+
+    function setFieldError(field, message) {
+      field.classList.add('field-error');
+      field.setAttribute('aria-invalid', 'true');
+      var msg = document.getElementById(field.id + '-error');
+      if (!msg) {
+        msg = document.createElement('p');
+        msg.className = 'field-error-msg';
+        msg.id = field.id + '-error';
+        var group = field.closest('.form-group') || field.parentElement;
+        group.appendChild(msg);
+        field.setAttribute('aria-describedby', msg.id);
+      }
+      msg.textContent = message;
+    }
+
+    function clearFieldError(field) {
+      field.classList.remove('field-error');
+      field.removeAttribute('aria-invalid');
+      var msg = document.getElementById(field.id + '-error');
+      if (msg) msg.textContent = '';
+    }
+
+    // Returns a message describing what's wrong with a field, or '' if valid
+    function fieldError(field) {
+      var v = field.value.trim();
+      switch (field.id) {
+        case 'firstName':
+          return v ? '' : 'Please enter your first name.';
+        case 'lastName':
+          return v ? '' : 'Please enter your last name.';
+        case 'email':
+          if (!v) return 'Please enter your email address.';
+          return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v) ? '' : 'That email doesn’t look right — please double-check it.';
+        case 'phone':
+          if (!v) return '';
+          var digits = v.replace(/\D/g, '');
+          return (digits.length >= 7 && digits.length <= 15) ? '' : 'That phone number doesn’t look right — please double-check it.';
+        case 'orderType':
+          return v ? '' : 'Please choose what you’d like to order.';
+        case 'pickupDate': {
+          if (!v) return 'Please pick your desired pickup or event date.';
+          var parts = v.split('-');
+          var picked = new Date(parts[0], parts[1] - 1, parts[2]);
+          if (isNaN(picked.getTime())) return 'Please pick a valid date.';
+          var today = new Date();
+          today.setHours(0, 0, 0, 0);
+          var earliest = new Date(today);
+          earliest.setDate(earliest.getDate() + 1);
+          if (picked < earliest) return 'Orders need at least 24–48 hours notice — please choose a later date.';
+          var latest = new Date(today);
+          latest.setFullYear(latest.getFullYear() + 2);
+          if (picked > latest) return 'That date is more than two years away — please double-check the year.';
+          return '';
+        }
+        case 'orderDetails':
+          if (!v) return 'Please tell us a little about your order.';
+          if (v.length < 10) return 'Please add a few more details — flavors, servings, allergies, theme…';
+          return '';
+        default:
+          return (field.hasAttribute('required') && !v) ? 'This field is required.' : '';
+      }
+    }
+
+    var validatedFields = orderForm.querySelectorAll('input:not([type="hidden"]):not([name="bot-field"]), select, textarea');
+    validatedFields.forEach(function (field) {
+      // Only flag on blur when the field has content ("reward early,
+      // punish late") — empty required fields get caught on submit.
+      field.addEventListener('blur', function () {
+        if (!field.value.trim()) return;
+        var err = fieldError(field);
+        if (err) setFieldError(field, err); else clearFieldError(field);
+      });
+      field.addEventListener('input', function () { clearFieldError(field); });
+      field.addEventListener('change', function () { clearFieldError(field); });
+    });
+
     // If there's a cart summary field, populate it
     var cartSummaryField = document.getElementById('cartSummary');
     if (cartSummaryField && cart.length > 0) {
@@ -346,24 +442,21 @@
         return;
       }
 
-      // Basic required-field validation
-      var valid = true;
-      orderForm.querySelectorAll('[required]').forEach(function (field) {
-        if (!field.value.trim()) {
-          valid = false;
-          field.classList.add('field-error');
-          field.addEventListener('input', function () {
-            field.classList.remove('field-error');
-          }, { once: true });
+      // Validate every field and show inline messages
+      var firstInvalid = null;
+      validatedFields.forEach(function (field) {
+        var err = fieldError(field);
+        if (err) {
+          setFieldError(field, err);
+          if (!firstInvalid) firstInvalid = field;
+        } else {
+          clearFieldError(field);
         }
       });
 
-      if (!valid) {
-        var firstError = orderForm.querySelector('.field-error');
-        if (firstError) {
-          firstError.focus();
-          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+      if (firstInvalid) {
+        firstInvalid.focus();
+        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
 
