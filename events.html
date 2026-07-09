@@ -164,6 +164,7 @@
 </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- NAV -->
 <header class="nav-header" id="nav">
@@ -183,7 +184,7 @@
     <div class="nav-actions">
       <button class="cart-btn" id="cartBtn" aria-label="View cart"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count" id="cartCount">0</span></button>
       <a href="contact.html" class="btn btn-primary nav-order-btn">Request an Order</a>
-      <button class="hamburger" id="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
@@ -196,6 +197,7 @@
     <a href="contact.html" class="btn btn-primary mobile-cta">Request an Order</a>
   </div>
 </header>
+<main id="main">
 
 <!-- PAGE HERO -->
 <section class="page-hero events-hero">
@@ -576,6 +578,7 @@
 </section>
 
 <!-- FOOTER -->
+</main>
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
@@ -597,7 +600,7 @@
 <div class="sticky-mobile-cta" id="stickyCta">
   <a href="contact.html" class="btn btn-primary btn-full">🎂 Request an Order</a>
 </div>
-<div class="cart-drawer" id="cartDrawer" aria-hidden="true"><div class="cart-drawer-inner"><div class="cart-header"><h3>Your Request</h3><button class="cart-close" id="cartClose">✕</button></div><div class="cart-items" id="cartItems"><p class="cart-empty">Your cart is empty!</p></div><div class="cart-footer" id="cartFooter" style="display:none"><div class="cart-total"><span>Estimated Total</span><span id="cartTotal">$0</span></div><p class="cart-estimate-note">Final pricing is confirmed by Kelsey — custom designs vary.</p><a href="contact.html" class="btn btn-primary btn-full">Send Request →</a></div></div></div>
+<div class="cart-drawer" id="cartDrawer" aria-hidden="true" inert><div class="cart-drawer-inner"><div class="cart-header"><h3>Your Request</h3><button class="cart-close" id="cartClose">✕</button></div><div class="cart-items" id="cartItems"><p class="cart-empty">Your cart is empty!</p></div><div class="cart-footer" id="cartFooter" style="display:none"><div class="cart-total"><span>Estimated Total</span><span id="cartTotal">$0</span></div><p class="cart-estimate-note">Final pricing is confirmed by Kelsey — custom designs vary.</p><a href="contact.html" class="btn btn-primary btn-full">Send Request →</a></div></div></div>
 <div class="cart-backdrop" id="cartBackdrop"></div>
 <script src="app.js"></script>
 <script data-pplx-inline-edit>

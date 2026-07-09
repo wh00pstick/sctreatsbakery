@@ -264,6 +264,7 @@
 </script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- ═══════════════════════════════════ NAV ═══════════════════════════════════ -->
 <header class="nav-header" id="nav">
@@ -288,7 +289,7 @@
         <span class="cart-count" id="cartCount">0</span>
       </button>
       <a href="contact.html" class="btn btn-primary nav-order-btn">Request an Order</a>
-      <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -305,6 +306,7 @@
     <a href="contact.html" class="btn btn-primary mobile-cta">Request an Order</a>
   </div>
 </header>
+<main id="main">
 
 <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
 <section class="hero" id="home">
@@ -540,16 +542,16 @@
       <a href="gallery.html"><img src="assets/gallery/sweet-123.jpg" alt="Sweet Confections creation" /></a>
       <a href="gallery.html"><img src="assets/gallery/sweet-140.jpg" alt="Sweet Confections creation" /></a>
       <!-- duplicate for seamless loop -->
-      <a href="gallery.html" aria-hidden="true"><img src="assets/gallery/sweet-012.jpg" alt="" /></a>
-      <a href="gallery.html" aria-hidden="true"><img src="assets/gallery/sweet-025.jpg" alt="" /></a>
-      <a href="gallery.html" aria-hidden="true"><img src="assets/gallery/sweet-038.jpg" alt="" /></a>
-      <a href="gallery.html" aria-hidden="true"><img src="assets/gallery/sweet-051.jpg" alt="" /></a>
-      <a href="gallery.html" aria-hidden="true"><img src="assets/gallery/sweet-067.jpg" alt="" /></a>
-      <a href="gallery.html" aria-hidden="true"><img src="assets/gallery/sweet-082.jpg" alt="" /></a>
-      <a href="gallery.html" aria-hidden="true"><img src="assets/gallery/sweet-094.jpg" alt="" /></a>
-      <a href="gallery.html" aria-hidden="true"><img src="assets/gallery/sweet-108.jpg" alt="" /></a>
-      <a href="gallery.html" aria-hidden="true"><img src="assets/gallery/sweet-123.jpg" alt="" /></a>
-      <a href="gallery.html" aria-hidden="true"><img src="assets/gallery/sweet-140.jpg" alt="" /></a>
+      <a href="gallery.html" aria-hidden="true" tabindex="-1"><img src="assets/gallery/sweet-012.jpg" alt="" /></a>
+      <a href="gallery.html" aria-hidden="true" tabindex="-1"><img src="assets/gallery/sweet-025.jpg" alt="" /></a>
+      <a href="gallery.html" aria-hidden="true" tabindex="-1"><img src="assets/gallery/sweet-038.jpg" alt="" /></a>
+      <a href="gallery.html" aria-hidden="true" tabindex="-1"><img src="assets/gallery/sweet-051.jpg" alt="" /></a>
+      <a href="gallery.html" aria-hidden="true" tabindex="-1"><img src="assets/gallery/sweet-067.jpg" alt="" /></a>
+      <a href="gallery.html" aria-hidden="true" tabindex="-1"><img src="assets/gallery/sweet-082.jpg" alt="" /></a>
+      <a href="gallery.html" aria-hidden="true" tabindex="-1"><img src="assets/gallery/sweet-094.jpg" alt="" /></a>
+      <a href="gallery.html" aria-hidden="true" tabindex="-1"><img src="assets/gallery/sweet-108.jpg" alt="" /></a>
+      <a href="gallery.html" aria-hidden="true" tabindex="-1"><img src="assets/gallery/sweet-123.jpg" alt="" /></a>
+      <a href="gallery.html" aria-hidden="true" tabindex="-1"><img src="assets/gallery/sweet-140.jpg" alt="" /></a>
     </div>
   </div>
   <div class="container gallery-strip-cta fade-in">
@@ -930,6 +932,7 @@
 </section>
 
 <!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+</main>
 <footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand">
@@ -970,7 +973,7 @@
 </div>
 
 <!-- ═══════════════════════════════════ CART DRAWER ═══════════════════════════════════ -->
-<div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+<div class="cart-drawer" id="cartDrawer" aria-hidden="true" inert>
   <div class="cart-drawer-inner">
     <div class="cart-header">
       <h3>Your Request</h3>

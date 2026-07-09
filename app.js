@@ -153,6 +153,7 @@
     if (!drawer) return;
     drawer.classList.add('open');
     drawer.setAttribute('aria-hidden', 'false');
+    drawer.inert = false;
     if (backdrop) backdrop.classList.add('visible');
     document.body.classList.add('cart-open');
   }
@@ -163,6 +164,7 @@
     if (!drawer) return;
     drawer.classList.remove('open');
     drawer.setAttribute('aria-hidden', 'true');
+    drawer.inert = true;
     if (backdrop) backdrop.classList.remove('visible');
     document.body.classList.remove('cart-open');
   }
@@ -192,6 +194,7 @@
     if (hamburger) {
       hamburger.classList.add('active');
       hamburger.setAttribute('aria-label', 'Close menu');
+      hamburger.setAttribute('aria-expanded', 'true');
     }
     document.body.classList.add('menu-open');
   }
@@ -202,6 +205,7 @@
     if (hamburger) {
       hamburger.classList.remove('active');
       hamburger.setAttribute('aria-label', 'Open menu');
+      hamburger.setAttribute('aria-expanded', 'false');
     }
     document.body.classList.remove('menu-open');
   }
@@ -300,10 +304,10 @@
         // Update active state
         filterTabs.forEach(function (t) {
           t.classList.remove('active');
-          t.setAttribute('aria-selected', 'false');
+          t.setAttribute('aria-pressed', 'false');
         });
         tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
+        tab.setAttribute('aria-pressed', 'true');
 
         var filter = tab.dataset.filter;
         var cards  = document.querySelectorAll('.product-card');
