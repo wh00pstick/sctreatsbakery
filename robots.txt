@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
 
-# Don't crawl the originals or any potential admin paths
-Disallow: /assets/originals_backup/
-
 Sitemap: https://sctreatsbakery.com/sitemap.xml

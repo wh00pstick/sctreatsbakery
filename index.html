@@ -4,18 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sweet Confections by Kelsey — Homemade Treats, Weddings & Events | Berkshires & Beyond</title>
-  <meta name="description" content="Handcrafted baked delights by Kelsey — based in Pittsfield, MA and serving the Berkshires, Western MA, Eastern NY, Southern VT & Northwest CT. Custom cakes, cupcakes, cookies & more for birthdays, weddings, and events. Fully licensed & insured." />
+  <meta name="description" content="Custom cakes, cupcakes & cookies handcrafted in Pittsfield, MA — serving the Berkshires for birthdays, weddings & events. Licensed & insured." />
   <link rel="canonical" href="https://sctreatsbakery.com/" />
   <meta property="og:url" content="https://sctreatsbakery.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Sweet Confections by Kelsey — Homemade Treats, Weddings & Events | Berkshires & Beyond" />
   <meta property="og:image" content="https://sctreatsbakery.com/assets/hero-bg.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta property="og:site_name" content="Sweet Confections by Kelsey" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:description" content="Custom cakes, cupcakes & cookies handcrafted in Pittsfield, MA — serving the Berkshires for birthdays, weddings & events. Licensed & insured." />
+  <meta property="og:image:alt" content="Assortment of cakes, cupcakes, and pastries from Sweet Confections' Pittsfield bakery" />
+  <meta name="twitter:title" content="Sweet Confections by Kelsey — Homemade Treats, Weddings & Events | Berkshires & Beyond" />
+  <meta name="twitter:description" content="Custom cakes, cupcakes & cookies handcrafted in Pittsfield, MA — serving the Berkshires for birthdays, weddings & events. Licensed & insured." />
 <!-- Fonts: Playfair Display (display) + DM Sans (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
+  <link rel="preload" as="image" href="assets/hero-bg.jpg" fetchpriority="high" />
   <link rel="stylesheet" href="style.css" />
 
   <!-- LocalBusiness structured data for Google -->
@@ -23,6 +30,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Bakery",
+    "@id": "https://sctreatsbakery.com/#bakery",
     "name": "Sweet Confections by Kelsey",
     "image": "https://sctreatsbakery.com/assets/cake-bar.jpg",
     "url": "https://sctreatsbakery.com",
@@ -312,7 +320,7 @@
 <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
 <section class="hero" id="home">
   <div class="hero-bg">
-    <img src="assets/hero-bg.jpg" alt="Assortment of cakes, cupcakes, and pastries from Sweet Confections' Pittsfield bakery" class="hero-img" />
+    <img src="assets/hero-bg.jpg" alt="Assortment of cakes, cupcakes, and pastries from Sweet Confections' Pittsfield bakery" class="hero-img" fetchpriority="high" />
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-content">
@@ -378,7 +386,7 @@
         <a href="events.html" class="btn btn-primary">Learn More</a>
       </div>
       <div class="food-truck-image fade-in">
-        <img src="assets/food-truck.jpg" alt="Sweet Confections dessert food truck at a wedding" />
+        <img src="assets/food-truck.jpg" alt="Sweet Confections dessert food truck at a wedding" loading="lazy" decoding="async" />
         <div class="food-truck-badge">
           <span>🌟</span>
           <strong>Coming Soon</strong>
@@ -394,7 +402,7 @@
   <div class="container">
     <div class="cake-bar-teaser-grid fade-in">
       <div class="cake-bar-teaser-img">
-        <img src="assets/cake-bar.jpg" alt="The Cake Bar — a beautifully styled build-your-own cake bar set up at a wedding" />
+        <img src="assets/cake-bar.jpg" alt="The Cake Bar — a beautifully styled build-your-own cake bar set up at a wedding" loading="lazy" decoding="async" />
         <div class="cake-bar-teaser-badge">
           <span>🍰</span>
           <strong>Signature Experience</strong>

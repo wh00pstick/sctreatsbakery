@@ -1,0 +1,5 @@
+# Cache static assets for a day. Filenames here are stable (no build
+# hashing), so we keep it to 24h — long enough to speed up repeat visits,
+# short enough that a swapped photo (same filename) refreshes within a day.
+/assets/*
+  Cache-Control: public, max-age=86400

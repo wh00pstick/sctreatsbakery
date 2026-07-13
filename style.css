@@ -829,7 +829,7 @@ input, select, textarea { font: inherit; color: inherit; }
   box-shadow: 0 14px 30px -10px rgba(201,116,138,0.4);
 }
 .gallery-item:hover::after { opacity: 1; }
-.gallery-item img { width: 100%; display: block; }
+.gallery-item img { width: 100%; display: block; aspect-ratio: 1; object-fit: cover; }
 
 .gallery-end {
   text-align: center; padding: var(--space-12) var(--space-6);
