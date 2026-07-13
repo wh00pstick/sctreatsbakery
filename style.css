@@ -721,7 +721,9 @@ input, select, textarea { font: inherit; color: inherit; }
 .form-group input, .form-group select, .form-group textarea {
   padding: var(--space-3) var(--space-4);
   border: 2px solid var(--border); border-radius: var(--radius-md);
-  background: var(--cream); font-size: var(--text-sm);
+  background: var(--cream);
+  /* 16px min prevents iOS Safari from auto-zooming the page on focus */
+  font-size: 1rem;
   transition: border-color var(--transition);
   width: 100%;
 }
@@ -741,6 +743,21 @@ input, select, textarea { font: inherit; color: inherit; }
   border-radius: 0 0 var(--radius-md) 0; font-weight: 600;
 }
 .skip-link:focus { left: 0; }
+
+/* ─── FAQ (events page) ─── */
+.faq-section { background: linear-gradient(180deg, var(--pink-pale, #fff), #fff); }
+.faq-list { max-width: 780px; margin: var(--space-8) auto 0; display: flex; flex-direction: column; gap: var(--space-3); }
+.faq-item { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 0 var(--space-5); box-shadow: var(--shadow-sm); }
+.faq-item summary {
+  list-style: none; cursor: pointer; padding: var(--space-5) 0;
+  font-family: var(--font-display); font-size: var(--text-lg); color: var(--text);
+  display: flex; justify-content: space-between; align-items: center; gap: var(--space-4);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; font-size: 1.5rem; color: var(--pink-dark); line-height: 1; flex-shrink: 0; }
+.faq-item[open] summary::after { content: "\2013"; }
+.faq-item summary:focus-visible { outline: 2px solid var(--pink-dark); outline-offset: 3px; border-radius: var(--radius-sm); }
+.faq-item p { padding: 0 0 var(--space-5); margin: 0; color: var(--text-muted, #5c4d47); line-height: 1.65; }
 .form-note { font-size: var(--text-xs); color: var(--text-faint); text-align: center; max-width: none; }
 .form-success { text-align: center; padding: var(--space-10) var(--space-6); }
 .success-icon { font-size: 3rem; display: block; margin-bottom: var(--space-4); }

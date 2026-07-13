@@ -6,6 +6,12 @@
 (function () {
   'use strict';
 
+  /* Keep the footer copyright year current without a yearly edit. */
+  (function () {
+    var y = String(new Date().getFullYear());
+    document.querySelectorAll('.js-year').forEach(function (el) { el.textContent = y; });
+  })();
+
   /* ----------------------------------------------------------
      1. CART SYSTEM
      Persisted in sessionStorage so it survives page navigation.
@@ -147,26 +153,51 @@
   /* ----------------------------------------------------------
      2. CART DRAWER
   ---------------------------------------------------------- */
+  // Shared modal focus helpers: keep Tab inside an open overlay and
+  // restore focus to whatever opened it when it closes.
+  function focusableWithin(container) {
+    var sel = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    return Array.prototype.filter.call(container.querySelectorAll(sel), function (el) {
+      return el.offsetWidth > 0 || el.offsetHeight > 0;
+    });
+  }
+  function keepFocusInside(container, e) {
+    if (e.key !== 'Tab') return;
+    var f = focusableWithin(container);
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+
+  var cartReturnFocus = null;
+
   function openCartDrawer() {
     var drawer   = document.getElementById('cartDrawer');
     var backdrop = document.getElementById('cartBackdrop');
     if (!drawer) return;
+    cartReturnFocus = document.activeElement;
     drawer.classList.add('open');
     drawer.setAttribute('aria-hidden', 'false');
     drawer.inert = false;
     if (backdrop) backdrop.classList.add('visible');
     document.body.classList.add('cart-open');
+    var closeBtn = document.getElementById('cartClose');
+    if (closeBtn) closeBtn.focus();
   }
 
   function closeCartDrawer() {
     var drawer   = document.getElementById('cartDrawer');
     var backdrop = document.getElementById('cartBackdrop');
     if (!drawer) return;
+    var wasOpen = drawer.classList.contains('open');
     drawer.classList.remove('open');
     drawer.setAttribute('aria-hidden', 'true');
     drawer.inert = true;
     if (backdrop) backdrop.classList.remove('visible');
     document.body.classList.remove('cart-open');
+    if (wasOpen && cartReturnFocus && typeof cartReturnFocus.focus === 'function') cartReturnFocus.focus();
+    cartReturnFocus = null;
   }
 
   var cartBtn     = document.getElementById('cartBtn');
@@ -177,19 +208,16 @@
   if (cartClose)    cartClose.addEventListener('click', closeCartDrawer);
   if (cartBackdrop) cartBackdrop.addEventListener('click', closeCartDrawer);
 
-  // Close on Escape key
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeCartDrawer();
-  });
-
   /* ----------------------------------------------------------
      3. HAMBURGER / MOBILE MENU
   ---------------------------------------------------------- */
   var hamburger  = document.getElementById('hamburger');
   var mobileMenu = document.getElementById('mobileMenu');
+  var menuReturnFocus = null;
 
   function openMobileMenu() {
     if (!mobileMenu) return;
+    menuReturnFocus = document.activeElement;
     mobileMenu.classList.add('open');
     if (hamburger) {
       hamburger.classList.add('active');
@@ -197,10 +225,13 @@
       hamburger.setAttribute('aria-expanded', 'true');
     }
     document.body.classList.add('menu-open');
+    var firstLink = mobileMenu.querySelector('a');
+    if (firstLink) firstLink.focus();
   }
 
-  function closeMobileMenu() {
+  function closeMobileMenu(restoreFocus) {
     if (!mobileMenu) return;
+    var wasOpen = mobileMenu.classList.contains('open');
     mobileMenu.classList.remove('open');
     if (hamburger) {
       hamburger.classList.remove('active');
@@ -208,6 +239,8 @@
       hamburger.setAttribute('aria-expanded', 'false');
     }
     document.body.classList.remove('menu-open');
+    if (wasOpen && restoreFocus !== false && menuReturnFocus && typeof menuReturnFocus.focus === 'function') menuReturnFocus.focus();
+    menuReturnFocus = null;
   }
 
   function toggleMobileMenu() {
@@ -220,12 +253,34 @@
 
   if (hamburger) hamburger.addEventListener('click', toggleMobileMenu);
 
-  // Close mobile menu when a link is clicked
+  // Close mobile menu when a link is clicked (link navigates, so don't yank focus back)
   if (mobileMenu) {
     mobileMenu.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', closeMobileMenu);
+      link.addEventListener('click', function () { closeMobileMenu(false); });
     });
   }
+
+  // Escape closes any open overlay; Tab is trapped inside it while open.
+  document.addEventListener('keydown', function (e) {
+    var drawer = document.getElementById('cartDrawer');
+    var drawerOpen = drawer && drawer.classList.contains('open');
+    var menuOpen = mobileMenu && mobileMenu.classList.contains('open');
+    if (e.key === 'Escape') {
+      if (drawerOpen) closeCartDrawer();
+      if (menuOpen) closeMobileMenu();
+    } else if (e.key === 'Tab') {
+      if (drawerOpen) keepFocusInside(drawer, e);
+      else if (menuOpen) keepFocusInside(mobileMenu, e);
+    }
+  });
+
+  // If the viewport grows past the mobile breakpoint while the menu is open,
+  // close it so the scroll-lock doesn't strand a desktop user.
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 900 && mobileMenu && mobileMenu.classList.contains('open')) {
+      closeMobileMenu(false);
+    }
+  });
 
   /* ----------------------------------------------------------
      4. NAVBAR SCROLL EFFECT
@@ -472,6 +527,19 @@
       });
     }
 
+    // Prefill the order type when arriving from an events-page "Inquire" link
+    // (e.g. contact.html?type=cake-bar#order). Only accept a value that is a
+    // real <option>, then sync the lead-time hint.
+    if (orderTypeField) {
+      try {
+        var wantType = new URLSearchParams(window.location.search).get('type');
+        if (wantType && orderTypeField.querySelector('option[value="' + wantType.replace(/[^a-z-]/g, '') + '"]')) {
+          orderTypeField.value = wantType;
+          orderTypeField.dispatchEvent(new Event('change'));
+        }
+      } catch (e) {}
+    }
+
     var validatedFields = orderForm.querySelectorAll('input:not([type="hidden"]):not([name="bot-field"]), select, textarea:not(#cartSummary)');
     validatedFields.forEach(function (field) {
       // Only flag on blur when the field has content ("reward early,
@@ -618,12 +686,14 @@
     '.cart-btn { position: relative; background: none; border: none; cursor: pointer; color: #7a4f3a; display: flex; align-items: center; padding: 0.4rem; }',
     /* Mobile menu — dropdown under nav, controlled by style.css display:none / display:flex */
     /* Hamburger active state */
-    '.hamburger { background: none; border: none; cursor: pointer; display: none; flex-direction: column; gap: 5px; padding: 0.4rem; }',
+    /* NOTE: nav/hamburger DISPLAY is owned entirely by style.css (breakpoint 900px).
+       Only the hamburger→X animation lives here. Do not re-declare .hamburger display
+       or a nav breakpoint here — a 768px rule here previously fought style.css's 900px
+       rule and hid all navigation between 769–900px. */
     '.hamburger span { display: block; width: 24px; height: 2px; background: #7a4f3a; border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }',
     '.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }',
     '.hamburger.active span:nth-child(2) { opacity: 0; }',
     '.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }',
-    '@media(max-width:768px) { .hamburger { display: flex; } .nav-links { display: none; } .nav-order-btn { display: none; } }',
     /* Sticky mobile CTA */
     '.sticky-mobile-cta { position: fixed; bottom: 0; left: 0; right: 0; padding: 0.875rem 1rem; background: #fffcf9; border-top: 1px solid #fce8ef; z-index: 900; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); display: none; box-shadow: 0 -4px 24px rgba(201,116,138,0.15); }',
     '@media(max-width:768px) { .sticky-mobile-cta { display: block; } }',
