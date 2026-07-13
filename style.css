@@ -6,10 +6,10 @@
 
 :root {
   /* Brand Colors */
-  --pink:          #c9748a;
+  --pink:          #a85870;
   --pink-light:    #f2b8c6;
   --pink-pale:     #fce8ef;
-  --pink-dark:     #a85870;
+  --pink-dark:     #8f3d55;
   --cream:         #fdf8f3;
   --blush:         #fef0f3;
   --warm-white:    #fffcf9;
@@ -18,7 +18,7 @@
   --beige:         #f5ebe0;
   --text:          #2d1f18;
   --text-muted:    #7a6560;
-  --text-faint:    #b5a49e;
+  --text-faint:    #7a6560;
   --border:        #ead9d3;
   --divider:       #f0ddd8;
 
@@ -511,7 +511,7 @@ input, select, textarea { font: inherit; color: inherit; }
 .footer-social { display: flex; gap: var(--space-4); }
 .footer-social a { color: rgba(255,255,255,0.5); transition: color var(--transition); }
 .footer-social a:hover { color: var(--pink-light); }
-.footer-copy { font-size: var(--text-xs); color: rgba(255,255,255,0.35); }
+.footer-copy { font-size: var(--text-xs); color: rgba(255,255,255,0.6); }
 
 /* ─── STICKY CTA ─── */
 .sticky-mobile-cta {
