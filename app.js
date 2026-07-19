@@ -520,7 +520,7 @@
         'cookies': 'Cookies need 24–48 hours notice.',
         'brownies': 'Brownies need 24–48 hours notice.',
         'cinnamon-rolls': 'Cinnamon rolls need 24–48 hours notice.',
-        'pastry-box': 'Pastry boxes need 24–48 hours notice.'
+        'brunch-box': 'Brunch boxes need 24–48 hours notice.'
       };
       orderTypeField.addEventListener('change', function () {
         pickupHint.textContent = LEAD_TIMES[orderTypeField.value] || defaultHint;
