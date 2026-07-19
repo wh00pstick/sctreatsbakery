@@ -227,6 +227,15 @@ input, select, textarea { font: inherit; color: inherit; }
   color: var(--text-muted);
   transition: color var(--transition);
   position: relative;
+  white-space: nowrap;
+}
+/* Mid-width desktops: tighten spacing and drop the duplicate order button
+   so all seven links stay on one line (Order Info + cart remain) */
+@media (min-width: 901px) and (max-width: 1220px) {
+  .nav-inner { gap: var(--space-5); }
+  .nav-links { gap: var(--space-4); }
+  .nav-logo-img { height: 64px; }
+  .nav-order-btn { display: none !important; }
 }
 .nav-link::after {
   content: '';
