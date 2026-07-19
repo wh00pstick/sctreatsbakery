@@ -507,6 +507,25 @@
       }
     }
 
+    // Brunch box picker: only visible (and only submitted) when the
+    // "Build Your Own Brunch Box" order type is selected.
+    var brunchOptions = document.getElementById('brunchOptions');
+    var brunchErrorMsg = document.getElementById('brunchItems-error');
+    function syncBrunchOptions() {
+      if (!brunchOptions) return;
+      var on = document.getElementById('orderType').value === 'brunch-box';
+      brunchOptions.hidden = !on;
+      // Disabled inputs are left out of the form payload, so a box picked
+      // for a brunch order doesn't linger after switching to another type.
+      brunchOptions.querySelectorAll('input').forEach(function (box) { box.disabled = !on; });
+      if (!on && brunchErrorMsg) brunchErrorMsg.textContent = '';
+    }
+    if (brunchOptions) {
+      brunchOptions.addEventListener('change', function () {
+        if (brunchErrorMsg) brunchErrorMsg.textContent = '';
+      });
+    }
+
     // Lead-time hint under the date field follows the selected order type
     var orderTypeField = document.getElementById('orderType');
     var pickupHint = document.getElementById('pickupDateHint');
@@ -524,8 +543,10 @@
       };
       orderTypeField.addEventListener('change', function () {
         pickupHint.textContent = LEAD_TIMES[orderTypeField.value] || defaultHint;
+        syncBrunchOptions();
       });
     }
+    syncBrunchOptions();
 
     // Prefill the order type when arriving from an events-page "Inquire" link
     // (e.g. contact.html?type=cake-bar#order). Only accept a value that is a
@@ -577,9 +598,22 @@
         }
       });
 
+      // Brunch boxes need at least one item picked
+      var brunchInvalid = orderTypeField.value === 'brunch-box' && brunchOptions &&
+        !brunchOptions.querySelector('input[name="brunchItems[]"]:checked');
+      if (brunchInvalid && brunchErrorMsg) {
+        brunchErrorMsg.textContent = 'Please pick at least one item for your brunch box.';
+      }
+
       if (firstInvalid) {
         firstInvalid.focus();
         firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      if (brunchInvalid) {
+        var firstBox = brunchOptions.querySelector('input');
+        if (firstBox) firstBox.focus({ preventScroll: true });
+        brunchOptions.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
 

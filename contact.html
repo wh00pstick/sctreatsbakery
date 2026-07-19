@@ -106,6 +106,23 @@
               </select>
             </div>
 
+            <!-- Shown only when "Build Your Own Brunch Box" is selected (app.js).
+                 Must exist in static HTML so Netlify Forms registers the fields. -->
+            <fieldset class="form-group brunch-fieldset" id="brunchOptions" hidden>
+              <legend>Build your brunch box *</legend>
+              <p class="field-hint">Pick what goes in your box — Kelsey will confirm quantities and final pricing.</p>
+              <div class="checkbox-grid">
+                <label class="checkbox-option"><input type="checkbox" name="brunchItems[]" value="Bagels" disabled /><span>Bagels</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="brunchItems[]" value="Donuts" disabled /><span>Donuts</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="brunchItems[]" value="Muffins" disabled /><span>Muffins</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="brunchItems[]" value="Coffee Cake" disabled /><span>Coffee Cake</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="brunchItems[]" value="Cookies" disabled /><span>Cookies</span></label>
+                <label class="checkbox-option"><input type="checkbox" name="brunchItems[]" value="Brownies" disabled /><span>Brownies</span></label>
+              </div>
+              <label class="checkbox-option checkbox-addon"><input type="checkbox" name="brunchFruit" value="Yes (+$8)" disabled /><span>Add fresh fruit <strong>+$8</strong></span></label>
+              <p class="field-error-msg" id="brunchItems-error" role="alert"></p>
+            </fieldset>
+
             <div class="form-group">
               <label for="pickupDate">Desired Pickup / Event Date *</label>
               <input type="date" id="pickupDate" name="pickupDate" required aria-describedby="pickupDateHint" />
