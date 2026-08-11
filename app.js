@@ -539,6 +539,7 @@
         'cookies': 'Cookies need 24–48 hours notice.',
         'brownies': 'Brownies need 24–48 hours notice.',
         'cinnamon-rolls': 'Cinnamon rolls need 24–48 hours notice.',
+        'custard': 'Custard pints need 24–48 hours notice — flavors rotate, ask what’s available.',
         'brunch-box': 'Brunch boxes need 24–48 hours notice.',
         'gift-order': 'Most gift treats need 24–48 hours; custom cakes about 1 week.'
       };
