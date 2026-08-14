@@ -27,3 +27,10 @@ Key facts:
 - [Cake Gallery](https://sctreatsbakery.com/gallery.html): 160+ photos of real cakes and treats
 - [About Kelsey](https://sctreatsbakery.com/about.html): the baker and the story
 - [Order Info & Contact](https://sctreatsbakery.com/contact.html): order request form, lead times, pickup & delivery details
+
+## Guides
+
+- [Baking Notes & Ordering Guides](https://sctreatsbakery.com/blog.html): index of ordering guides
+- [How Much Does a Wedding Cake Cost in the Berkshires?](https://sctreatsbakery.com/blog-wedding-cake-cost.html): what drives wedding cake pricing (servings, design complexity, flavors, delivery distance), real starting prices, cake bar package pricing, 50% deposit terms, and ways to reduce cost
+- [How Far in Advance Should You Order a Custom Cake?](https://sctreatsbakery.com/blog-how-far-in-advance.html): lead times by product (24–48 hours for treats, ~1 week for custom cakes, 2–4 weeks for weddings/events), rush order guidance, and what details to include when ordering
+- [Frozen Custard vs. Ice Cream: What's the Difference?](https://sctreatsbakery.com/blog-frozen-custard-vs-ice-cream.html): frozen custard requires at least 1.4% egg yolk solids (both require 10% milkfat) and is churned with less air/overrun, making it denser and silkier; includes current custard flavors

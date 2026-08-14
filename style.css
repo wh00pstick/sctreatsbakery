@@ -773,6 +773,53 @@ input, select, textarea { font: inherit; color: inherit; }
 .field-error-msg:empty { display: none; }
 .field-hint { font-size: var(--text-xs); color: var(--text-faint); margin: 0; }
 
+/* ─── BLOG ─── */
+.blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-6); }
+.blog-card {
+  display: flex; flex-direction: column;
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);
+  padding: var(--space-8) var(--space-7);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.blog-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.blog-card h2, .blog-card h3 { font-size: var(--text-lg); margin-bottom: var(--space-3); }
+.blog-card p { color: var(--text-muted); font-size: var(--text-sm); max-width: none; margin-bottom: var(--space-5); }
+.blog-card .post-meta { margin-bottom: var(--space-3); }
+.blog-card .read-more { margin-top: auto; color: var(--pink); font-weight: 600; font-size: var(--text-sm); }
+.blog-card:hover .read-more { text-decoration: underline; }
+.post-meta {
+  font-size: var(--text-xs); color: var(--text-faint);
+  letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600;
+}
+
+/* Article prose — restores list markers and sets reading rhythm */
+/* Left edge lines up with .page-intro-inner above it */
+.post-body { max-width: var(--content-narrow); }
+.post-body > * + * { margin-top: var(--space-5); }
+.post-body p, .post-body li { color: var(--text-muted); line-height: 1.75; }
+.post-body h2 { font-size: var(--text-lg); margin-top: var(--space-10); }
+.post-body h3 { font-size: var(--text-base); margin-top: var(--space-8); }
+.post-body h2 em, .post-body h3 em { font-style: italic; color: var(--pink); }
+.post-body ul, .post-body ol { list-style: revert; padding-left: var(--space-6); }
+.post-body li { margin-bottom: var(--space-2); }
+.post-body li::marker { color: var(--pink-light); }
+.post-body a { color: var(--pink); text-decoration: underline; }
+.post-body strong { color: var(--text); }
+.post-body img { border-radius: var(--radius-lg); }
+.post-callout {
+  background: var(--blush); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: var(--space-6);
+}
+.post-callout p { margin: 0; }
+.post-callout p + p { margin-top: var(--space-3); }
+.post-cta {
+  background: var(--pink-pale); border-radius: var(--radius-lg);
+  padding: var(--space-8); text-align: center;
+}
+.post-cta h3 { font-size: var(--text-lg); margin-bottom: var(--space-3); }
+.post-cta p { margin-bottom: var(--space-5); }
+
 /* ─── Brunch box picker (order form) ─── */
 .brunch-fieldset { border: 0; padding: 0; margin: 0; }
 .brunch-fieldset legend { font-size: var(--text-sm); font-weight: 600; color: var(--text); padding: 0; margin-bottom: var(--space-2); }
