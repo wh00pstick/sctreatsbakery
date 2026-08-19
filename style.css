@@ -1405,3 +1405,12 @@ input, select, textarea {
 
 /* Ensure no element ever pushes the viewport horizontally */
 html, body { max-width: 100vw; overflow-x: clip; }
+
+/* Homepage occasion links under the featured menu CTA */
+.occasion-links {
+  margin-top: var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  max-width: none;
+}
+.occasion-links a { color: var(--pink); text-decoration: underline; }
