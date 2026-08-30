@@ -115,6 +115,8 @@ body {
   overflow-x: hidden;
 }
 img, video { display: block; max-width: 100%; height: auto; }
+/* Author display rules beat the UA [hidden] rule — restore it explicitly */
+[hidden] { display: none !important; }
 a { color: inherit; text-decoration: none; }
 button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
 ul, ol { list-style: none; }
