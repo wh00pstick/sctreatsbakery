@@ -576,6 +576,29 @@
       field.addEventListener('change', function () { clearFieldError(field); });
     });
 
+    // Plain-language names for the error summary — an older user should read
+    // "Your name" not "firstName".
+    var FIELD_NAMES = {
+      firstName: 'Your first name', lastName: 'Your last name',
+      email: 'Your email address', phone: 'Your phone number',
+      orderType: 'What you are ordering', pickupDate: 'The date you need it',
+      orderDetails: 'Order details'
+    };
+    var errorsBox  = document.getElementById('formErrors');
+    var errorsList = document.getElementById('formErrorsList');
+    var alertBox   = document.getElementById('formAlert');
+
+    function showErrorSummary(items) {
+      if (!errorsBox || !errorsList) return;
+      if (!items.length) { errorsBox.hidden = true; errorsList.innerHTML = ''; return; }
+      errorsList.innerHTML = items.map(function (it) {
+        return '<li><a href="#' + it.id + '">' + FIELD_NAMES[it.id] + ' — ' + it.msg + '</a></li>';
+      }).join('');
+      errorsBox.hidden = false;
+      errorsBox.focus();
+      errorsBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
     orderForm.addEventListener('submit', function (e) {
       e.preventDefault();
 
@@ -608,8 +631,13 @@
       }
 
       if (firstInvalid) {
-        firstInvalid.focus();
-        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Show every problem at once instead of bouncing one field at a time
+        var problems = [];
+        validatedFields.forEach(function (field) {
+          var msg = fieldError(field);
+          if (msg && FIELD_NAMES[field.id]) problems.push({ id: field.id, msg: msg });
+        });
+        showErrorSummary(problems);
         return;
       }
       if (brunchInvalid) {
@@ -618,6 +646,9 @@
         brunchOptions.scrollIntoView({ behavior: 'smooth', block: 'center' });
         return;
       }
+
+      showErrorSummary([]);
+      if (alertBox) alertBox.hidden = true;
 
       // Submit to Netlify Forms via fetch (keeps user on the page)
       var submitBtn = orderForm.querySelector('button[type="submit"]');
@@ -645,7 +676,12 @@
       })
       .catch(function () {
         if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send Order Request →'; }
-        alert('Sorry, something went wrong sending your order. Please email sctreatsshop@gmail.com directly.');
+        // An alert() is a dead end on a phone — show a block they can act on
+        if (alertBox) {
+          alertBox.hidden = false;
+          alertBox.focus();
+          alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
       });
     });
   }

@@ -828,6 +828,23 @@ body.menu-open .sticky-mobile-cta, body.cart-open .sticky-mobile-cta { display: 
 .form-group textarea { resize: vertical; min-height: 120px; }
 /* .field-error borders come from the runtime styles app.js injects */
 .field-error-msg { font-size: var(--text-sm); font-weight: 700; color: #b8405e; margin: 0; }
+/* Error summary + send-failure block: every problem at once, and a way out
+   that isn't a dismissible alert() */
+.form-errors, .form-alert {
+  border-radius: var(--radius-lg); padding: var(--space-5);
+  font-size: var(--text-base); line-height: 1.5;
+}
+.form-errors { background: #fdecef; border: 2px solid #e05a7a; color: #8f2740; }
+.form-errors strong { display: block; margin-bottom: var(--space-3); font-size: var(--text-base); }
+.form-errors ul { list-style: disc; padding-left: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); }
+.form-errors li { max-width: none; }
+.form-errors a { color: #8f2740; text-decoration: underline; display: inline-block; min-height: 32px; }
+.form-alert { background: var(--blush); border: 2px solid var(--pink); color: var(--text); }
+.form-alert strong { display: block; font-size: var(--text-lg); margin-bottom: var(--space-2); }
+.form-alert p { margin-bottom: var(--space-4); }
+.form-alert-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+/* Inline prose links: widen the hit area without disturbing line boxes */
+.text-link { padding-block: 4px; }
 .field-error-msg:empty { display: none; }
 .field-hint { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.5; margin: 0; }
 

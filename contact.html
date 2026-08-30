@@ -169,11 +169,6 @@
               <p class="field-hint" id="pickupDateHint">Treats need 24–48 hours · custom cakes about 1 week · events &amp; cake bars 2–4 weeks</p>
             </div>
 
-            <div class="form-group">
-              <label for="orderDetails">Order Details &amp; Special Instructions <span class="req">(required)</span></label>
-              <textarea id="orderDetails" name="orderDetails" rows="5" placeholder="Tell us everything! Flavors, design ideas, number of servings, allergies, themes, inscriptions — the more detail the better." required maxlength="2000"></textarea>
-            </div>
-
             <div class="allergy-notice">
               <span class="allergy-icon">⚠️</span>
               <div>
@@ -181,6 +176,12 @@
                 <p>All items are baked in a licensed home kitchen that handles wheat, eggs, dairy, soy, tree nuts, and peanuts. Cross-contact is possible. Please list any allergies or dietary restrictions in your order details above.</p>
               </div>
             </div>
+
+            <div class="form-group">
+              <label for="orderDetails">Order Details &amp; Special Instructions <span class="req">(required)</span></label>
+              <textarea id="orderDetails" name="orderDetails" rows="5" placeholder="Tell us everything! Flavors, design ideas, number of servings, allergies, themes, inscriptions — the more detail the better." required maxlength="2000"></textarea>
+            </div>
+
 
             <div class="form-group">
               <label for="howHeard">How did you hear about us? <span class="opt">(optional)</span></label>
@@ -199,6 +200,20 @@
             <div class="cart-summary-box" id="cartSummaryBox" style="display:none">
               <h4>Items from your cart:</h4>
               <div id="formCartItems"></div>
+            </div>
+
+            <div class="form-errors" id="formErrors" hidden role="alert" tabindex="-1">
+              <strong>Please check a couple of things before sending:</strong>
+              <ul id="formErrorsList"></ul>
+            </div>
+
+            <div class="form-alert" id="formAlert" hidden role="alert" tabindex="-1">
+              <strong>That didn't send.</strong>
+              <p>Nothing you typed was lost — it's all still on this page. Please try again, or reach Kelsey directly:</p>
+              <div class="form-alert-actions">
+                <a href="tel:+14133588556" class="btn btn-primary">📞 Call Kelsey</a>
+                <a href="mailto:sctreatsshop@gmail.com" class="btn btn-outline-pink">✉️ Email Kelsey</a>
+              </div>
             </div>
 
             <button type="submit" class="btn btn-primary btn-full btn-lg">Send Order Request →</button>
