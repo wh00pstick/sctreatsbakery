@@ -82,6 +82,20 @@
       if (footerEl) footerEl.style.display = '';
     }
 
+    // Carry what they picked into the form's order-type prefill
+    var sendLink = document.getElementById('cartSendRequest');
+    if (sendLink) {
+      var TYPE_MAP = {
+        'custom-cake':'custom-cake','wedding-cake':'event-package','smash-cake':'custom-cake',
+        'themed-cake':'custom-cake','cupcakes':'cupcakes','classic-cupcakes':'cupcakes',
+        'specialty-cupcakes':'cupcakes','cookies':'cookies','brownies':'brownies',
+        'cinnamon-roll':'cinnamon-rolls','brunch-box':'brunch-box','custard':'custard',
+        'strawberries':'other','donuts':'other','muffins':'other','bagels':'other'
+      };
+      var t = cart.length ? TYPE_MAP[cart[0].product] : null;
+      sendLink.href = t ? 'contact.html?type=' + t + '#order' : 'contact.html#order';
+    }
+
     saveCart(cart);
     updateFormCartSummary();
   }
@@ -204,6 +218,8 @@
   var cartClose   = document.getElementById('cartClose');
   var cartBackdrop = document.getElementById('cartBackdrop');
 
+  var cartKeepLooking = document.getElementById('cartKeepLooking');
+  if (cartKeepLooking) cartKeepLooking.addEventListener('click', closeCartDrawer);
   if (cartBtn)      cartBtn.addEventListener('click', openCartDrawer);
   if (cartClose)    cartClose.addEventListener('click', closeCartDrawer);
   if (cartBackdrop) cartBackdrop.addEventListener('click', closeCartDrawer);
@@ -484,6 +500,8 @@
         case 'orderType':
           return v ? '' : 'Please choose what you’d like to order.';
         case 'pickupDate': {
+          var flex = document.getElementById('dateFlexible');
+          if (flex && flex.checked) return '';
           if (!v) return 'Please pick your desired pickup or event date.';
           var parts = v.split('-');
           var picked = new Date(parts[0], parts[1] - 1, parts[2]);
@@ -499,8 +517,7 @@
           return '';
         }
         case 'orderDetails':
-          if (!v) return 'Please tell us a little about your order.';
-          if (v.length < 10) return 'Please add a few more details — flavors, servings, allergies, theme…';
+          if (!v) return 'In a few words, what would you like? Kelsey will ask about the details when she calls.';
           return '';
         default:
           return (field.hasAttribute('required') && !v) ? 'This field is required.' : '';
@@ -541,11 +558,50 @@
         'cinnamon-rolls': 'Cinnamon rolls need 24–48 hours notice.',
         'custard': 'Custard pints need 24–48 hours notice — flavors rotate, ask what’s available.',
         'brunch-box': 'Brunch boxes need 24–48 hours notice.',
-        'gift-order': 'Most gift treats need 24–48 hours; custom cakes about 1 week.'
+        'gift-order': 'Most gift treats need 24–48 hours; custom cakes about 1 week.',
+        'other': 'Most treats need 24–48 hours; custom cakes about a week. Kelsey will confirm.'
       };
+      // Advisory only — never blocks submission. Kelsey decides what she can take.
+      var SOFT_LEAD = { 'custom-cake': 7, 'event-package': 21, 'cake-bar': 21 };
+      var SOFT_LABEL = { 'custom-cake': 'custom cakes', 'event-package': 'event and wedding packages', 'cake-bar': 'cake bar bookings' };
+      var pickupWarn = document.getElementById('pickupDateWarn');
+      var dateFlexible = document.getElementById('dateFlexible');
+
+      function updateLeadWarning() {
+        if (!pickupWarn || !pickupField) return;
+        var days = SOFT_LEAD[orderTypeField.value];
+        var v = pickupField.value;
+        if (!days || !v || (dateFlexible && dateFlexible.checked)) { pickupWarn.textContent = ''; return; }
+        var parts = v.split('-');
+        var picked = new Date(parts[0], parts[1] - 1, parts[2]);
+        var today = new Date(); today.setHours(0,0,0,0);
+        var diff = Math.round((picked - today) / 864e5);
+        if (diff < days) {
+          pickupWarn.textContent = 'Heads up: ' + SOFT_LABEL[orderTypeField.value] +
+            ' usually need about ' + (days >= 14 ? (days / 7) + ' weeks' : days + ' days') +
+            '. Send your request anyway — Kelsey will call and tell you honestly whether she can do it, or suggest something she can.';
+        } else {
+          pickupWarn.textContent = '';
+        }
+      }
+      if (pickupField) pickupField.addEventListener('change', updateLeadWarning);
+      if (dateFlexible) {
+        dateFlexible.addEventListener('change', function () {
+          pickupField.disabled = this.checked;
+          pickupField.required = !this.checked;
+          clearFieldError(pickupField);
+          updateLeadWarning();
+        });
+      }
+
       orderTypeField.addEventListener('change', function () {
         pickupHint.textContent = LEAD_TIMES[orderTypeField.value] || defaultHint;
         syncBrunchOptions();
+        updateLeadWarning();
+        if (pickupField && pickupField.value) {
+          var e2 = fieldError(pickupField);
+          if (e2) setFieldError(pickupField, e2); else clearFieldError(pickupField);
+        }
       });
     }
     syncBrunchOptions();
@@ -569,6 +625,9 @@
       // punish late") — empty required fields get caught on submit.
       field.addEventListener('blur', function () {
         if (!field.value.trim()) return;
+        // Someone tabbing away mid-entry has done nothing wrong yet
+        if (field.id === 'phone' && field.value.replace(/\D/g, '').length < 7) return;
+        if (field.id === 'email' && !/@.+\./.test(field.value)) return;
         var err = fieldError(field);
         if (err) setFieldError(field, err); else clearFieldError(field);
       });
@@ -675,7 +734,7 @@
         updateCartUI();
       })
       .catch(function () {
-        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send Order Request →'; }
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = 'Send This to Kelsey'; }
         // An alert() is a dead end on a phone — show a block they can act on
         if (alertBox) {
           alertBox.hidden = false;
@@ -721,12 +780,11 @@
   var style = document.createElement('style');
   style.textContent = [
     /* Cart drawer open/close */
-    '.cart-drawer { position: fixed; top: 0; right: -400px; width: 380px; max-width: 100vw; height: 100vh; background: #fffcf9; z-index: 1100; display: flex; flex-direction: column; transition: right 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow: -8px 0 40px rgba(201,116,138,0.18); }',
+    '.cart-drawer { position: fixed; top: 0; right: -400px; width: 380px; max-width: 100vw; height: 100dvh; background: #fffcf9; z-index: 1100; display: flex; flex-direction: column; transition: right 0.35s cubic-bezier(0.4,0,0.2,1); box-shadow: -8px 0 40px rgba(201,116,138,0.18); }',
     '.cart-drawer.open { right: 0; }',
     '.cart-drawer-inner { display: flex; flex-direction: column; height: 100%; }',
     '.cart-header { display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 1.5rem; border-bottom: 1px solid #fce8ef; }',
     '.cart-header h3 { font-family: "Playfair Display", serif; font-size: 1.25rem; color: #7a4f3a; margin: 0; }',
-    '.cart-close { background: none; border: none; font-size: 1.2rem; color: #c9748a; cursor: pointer; padding: 0.25rem 0.5rem; border-radius: 50%; transition: background 0.2s; }',
     '.cart-close:hover { background: #fce8ef; }',
     '.cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; }',
     '.cart-empty { text-align: center; color: #a85870; font-size: 0.95rem; padding: 2rem 0; }',
@@ -735,11 +793,8 @@
     '.cart-item-info { display: flex; justify-content: space-between; align-items: center; }',
     '.cart-item-name { font-size: 0.9rem; color: #7a4f3a; font-weight: 500; }',
     '.cart-item-price { font-size: 0.9rem; color: #c9748a; font-weight: 600; }',
-    '.cart-item-controls { display: flex; align-items: center; gap: 0.5rem; }',
-    '.cart-qty-btn { width: 28px; height: 28px; border: 1.5px solid #f2b8c6; background: #fff; border-radius: 50%; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; color: #c9748a; transition: background 0.2s, border-color 0.2s; line-height: 1; }',
     '.cart-qty-btn:hover { background: #fce8ef; border-color: #c9748a; }',
     '.cart-qty { min-width: 24px; text-align: center; font-size: 0.9rem; color: #7a4f3a; font-weight: 600; }',
-    '.cart-remove { margin-left: auto; background: none; border: none; color: #c9748a; cursor: pointer; font-size: 0.85rem; padding: 0.2rem 0.4rem; border-radius: 4px; transition: background 0.2s; }',
     '.cart-remove:hover { background: #fce8ef; }',
     '.cart-footer { padding: 1.25rem 1.5rem; border-top: 1px solid #fce8ef; }',
     '.cart-total { display: flex; justify-content: space-between; font-size: 1.05rem; font-weight: 700; color: #7a4f3a; margin-bottom: 1rem; }',
