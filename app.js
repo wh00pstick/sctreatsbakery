@@ -576,8 +576,8 @@
       field.addEventListener('change', function () { clearFieldError(field); });
     });
 
-    // Plain-language names for the error summary — an older user should read
-    // "Your name" not "firstName".
+    // Gates which fields appear in the summary (and keeps app.js from listing
+    // internal fields). The messages themselves already name the field.
     var FIELD_NAMES = {
       firstName: 'Your first name', lastName: 'Your last name',
       email: 'Your email address', phone: 'Your phone number',
@@ -592,7 +592,7 @@
       if (!errorsBox || !errorsList) return;
       if (!items.length) { errorsBox.hidden = true; errorsList.innerHTML = ''; return; }
       errorsList.innerHTML = items.map(function (it) {
-        return '<li><a href="#' + it.id + '">' + FIELD_NAMES[it.id] + ' — ' + it.msg + '</a></li>';
+        return '<li><a href="#' + it.id + '">' + it.msg + '</a></li>';
       }).join('');
       errorsBox.hidden = false;
       errorsBox.focus();

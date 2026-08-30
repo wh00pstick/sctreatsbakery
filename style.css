@@ -838,7 +838,7 @@ body.menu-open .sticky-mobile-cta, body.cart-open .sticky-mobile-cta { display: 
 .form-errors strong { display: block; margin-bottom: var(--space-3); font-size: var(--text-base); }
 .form-errors ul { list-style: disc; padding-left: var(--space-6); display: flex; flex-direction: column; gap: var(--space-2); }
 .form-errors li { max-width: none; }
-.form-errors a { color: #8f2740; text-decoration: underline; display: inline-block; min-height: 32px; }
+.form-errors a { color: #8f2740; text-decoration: underline; display: block; padding-block: 6px; }
 .form-alert { background: var(--blush); border: 2px solid var(--pink); color: var(--text); }
 .form-alert strong { display: block; font-size: var(--text-lg); margin-bottom: var(--space-2); }
 .form-alert p { margin-bottom: var(--space-4); }
