@@ -46,6 +46,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#c9748a" />
+  <script>document.documentElement.className+=' js';</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -55,7 +56,7 @@
     <nav class="nav-links" aria-label="Main navigation"><a href="index.html" class="nav-link">Home</a><a href="shop.html" class="nav-link">Shop</a><a href="gallery.html" class="nav-link">Gallery</a><a href="events.html" class="nav-link">Events & Food Truck</a><a href="about.html" class="nav-link">About</a><a href="gifts.html" class="nav-link">Send a Gift</a><a href="contact.html" class="nav-link active">Order Info</a></nav>
     <div class="nav-actions"><button class="cart-btn" id="cartBtn" aria-label="View cart"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg><span class="cart-count" id="cartCount">0</span></button><a href="contact.html" class="btn btn-primary nav-order-btn">Request an Order</a><button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div>
   </div>
-  <div class="mobile-menu" id="mobileMenu"><a href="index.html" class="mobile-link">Home</a><a href="shop.html" class="mobile-link">Shop</a><a href="gallery.html" class="mobile-link">Gallery</a><a href="events.html" class="mobile-link">Events & Food Truck</a><a href="about.html" class="mobile-link">About</a><a href="gifts.html" class="mobile-link">Send a Gift</a><a href="blog.html" class="mobile-link">Blog</a><a href="contact.html" class="mobile-link">Order Info</a><a href="contact.html" class="btn btn-primary mobile-cta">Request an Order</a></div>
+  <div class="mobile-menu" id="mobileMenu"><p class="mobile-group-label">Order or Contact</p><a href="tel:+14133588556" class="mobile-link mobile-link-strong">📞 Call Kelsey — (413) 358-8556</a><a href="mailto:sctreatsshop@gmail.com" class="mobile-link mobile-link-strong">✉️ Email Kelsey</a><a href="contact.html#order" class="mobile-link mobile-link-strong active" aria-current="page">📝 Order Form</a><a href="shop.html" class="mobile-link mobile-link-strong">🎂 See the Menu</a><p class="mobile-group-label">Look Around</p><a href="index.html" class="mobile-link">Home</a><a href="gallery.html" class="mobile-link">Gallery</a><a href="gifts.html" class="mobile-link">Send a Gift</a><a href="events.html" class="mobile-link">Events &amp; Food Truck</a><a href="about.html" class="mobile-link">About</a><a href="blog.html" class="mobile-link">Blog</a></div>
 </header>
 <main id="main">
 
@@ -64,8 +65,24 @@
     <div class="page-intro-inner fade-in">
       <p class="section-eyebrow">✦ Let's Get Baking ✦</p>
       <h1 class="page-title">Order Info &amp; Contact</h1>
-      <p>Ready to place an order or book us for an event? Fill out the form below and Kelsey will get back to you within 24 hours. Can't wait? Email directly at <a href="mailto:sctreatsshop@gmail.com" class="text-link">sctreatsshop@gmail.com</a></p>
+      <p class="contact-lede">The fastest way to reach Kelsey is to call. Prefer to write it all out? The order form is just below.</p>
     </div>
+
+    <div class="contact-now">
+      <a href="tel:+14133588556" class="contact-now-btn">
+        <span class="contact-now-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+        <span class="contact-now-label"><strong>Call Kelsey</strong><span class="contact-now-sub">(413) 358-8556</span></span>
+      </a>
+      <a href="mailto:sctreatsshop@gmail.com?subject=Order%20Request&amp;body=Hi%20Kelsey%2C%0A%0AWhat%20I%27d%20like%3A%20%0A%0ADate%20I%20need%20it%3A%20%0A%0AHow%20many%20people%3A%20%0A%0AMy%20phone%20number%3A%20%0A%0AThank%20you%21" class="contact-now-btn is-secondary">
+        <span class="contact-now-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+        <span class="contact-now-label"><strong>Email Kelsey</strong><span class="contact-now-sub">sctreatsshop@gmail.com</span></span>
+      </a>
+      <a href="#order" class="contact-now-btn is-secondary">
+        <span class="contact-now-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+        <span class="contact-now-label"><strong>Fill Out the Order Form</strong><span class="contact-now-sub">Right below on this page</span></span>
+      </a>
+    </div>
+    <p class="contact-now-note">Kelsey answers every message herself, usually within 24 hours.</p>
   </div>
 </section>
 
@@ -77,7 +94,7 @@
       <div class="contact-form-col fade-in" id="order">
         <div class="form-card">
           <h2>Request an Order</h2>
-          <p>Tell us what you'd like — Kelsey will confirm availability, final pricing, and your pickup time.</p>
+          <p>Eight quick questions. Nothing is charged — Kelsey confirms the price with you first.</p>
 
           <form class="order-form" id="orderForm" name="sweet-confections-order" method="POST" data-netlify="true" netlify-honeypot="bot-field">
             <!-- Netlify needs this hidden field to identify the form -->
@@ -85,17 +102,17 @@
 
             <div class="form-row">
               <div class="form-group">
-                <label for="firstName">First Name *</label>
-                <input type="text" id="firstName" name="firstName" placeholder="Jane" required maxlength="60" autocomplete="given-name" />
+                <label for="firstName">First Name <span class="req">(required)</span></label>
+                <input type="text" id="firstName" name="firstName" required maxlength="60" autocomplete="given-name" />
               </div>
               <div class="form-group">
-                <label for="lastName">Last Name *</label>
-                <input type="text" id="lastName" name="lastName" placeholder="Smith" required maxlength="60" autocomplete="family-name" />
+                <label for="lastName">Last Name <span class="req">(required)</span></label>
+                <input type="text" id="lastName" name="lastName" required maxlength="60" autocomplete="family-name" />
               </div>
             </div>
 
             <div class="form-group">
-              <label for="email">Email Address *</label>
+              <label for="email">Email Address <span class="req">(required)</span></label>
               <input type="email" id="email" name="email" placeholder="jane@example.com" required maxlength="254" autocomplete="email" spellcheck="false" />
             </div>
 
@@ -106,12 +123,12 @@
             </div>
 
             <div class="form-group">
-              <label for="phone">Phone Number</label>
+              <label for="phone">Phone Number <span class="opt">(optional — the fastest way for Kelsey to reach you)</span></label>
               <input type="tel" id="phone" name="phone" placeholder="Best number to reach you" maxlength="25" autocomplete="tel" inputmode="tel" />
             </div>
 
             <div class="form-group">
-              <label for="orderType">What are you ordering? *</label>
+              <label for="orderType">What are you ordering? <span class="req">(required)</span></label>
               <select id="orderType" name="orderType" required>
                 <option value="">Select an option...</option>
                 <option value="custom-cake">Custom Cake</option>
@@ -131,7 +148,7 @@
             <!-- Shown only when "Build Your Own Brunch Box" is selected (app.js).
                  Must exist in static HTML so Netlify Forms registers the fields. -->
             <fieldset class="form-group brunch-fieldset" id="brunchOptions" hidden>
-              <legend>Build your brunch box *</legend>
+              <legend>Build your brunch box <span class="req">(required)</span></legend>
               <p class="field-hint">Pick what goes in your box — Kelsey will confirm quantities and final pricing.</p>
               <div class="checkbox-grid">
                 <label class="checkbox-option"><input type="checkbox" name="brunchItems[]" value="Bagels" disabled /><span>Bagels</span></label>
@@ -147,13 +164,13 @@
             </fieldset>
 
             <div class="form-group">
-              <label for="pickupDate">Desired Pickup / Event Date *</label>
+              <label for="pickupDate">Desired Pickup / Event Date <span class="req">(required)</span></label>
               <input type="date" id="pickupDate" name="pickupDate" required aria-describedby="pickupDateHint" />
               <p class="field-hint" id="pickupDateHint">Treats need 24–48 hours · custom cakes about 1 week · events &amp; cake bars 2–4 weeks</p>
             </div>
 
             <div class="form-group">
-              <label for="orderDetails">Order Details &amp; Special Instructions *</label>
+              <label for="orderDetails">Order Details &amp; Special Instructions <span class="req">(required)</span></label>
               <textarea id="orderDetails" name="orderDetails" rows="5" placeholder="Tell us everything! Flavors, design ideas, number of servings, allergies, themes, inscriptions — the more detail the better." required maxlength="2000"></textarea>
             </div>
 
@@ -166,9 +183,9 @@
             </div>
 
             <div class="form-group">
-              <label for="howHeard">How did you hear about us?</label>
+              <label for="howHeard">How did you hear about us? <span class="opt">(optional)</span></label>
               <select id="howHeard" name="howHeard">
-                <option value="">Select...</option>
+                <option value="">Skip this</option>
                 <option value="facebook">Facebook</option>
                 <option value="instagram">Instagram</option>
                 <option value="word-of-mouth">Word of Mouth</option>
@@ -223,11 +240,11 @@
 
         <div class="info-card">
           <h3>📞 Contact Kelsey Directly</h3>
-          <a href="tel:+14133588556" class="contact-link">
+          <a href="tel:+14133588556" class="contact-link contact-link-primary">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             (413) 358-8556
           </a>
-          <a href="mailto:sctreatsshop@gmail.com" class="contact-link">
+          <a href="mailto:sctreatsshop@gmail.com?subject=Order%20Request&amp;body=Hi%20Kelsey%2C%0A%0AWhat%20I%27d%20like%3A%20%0A%0ADate%20I%20need%20it%3A%20%0A%0AHow%20many%20people%3A%20%0A%0AMy%20phone%20number%3A%20%0A%0AThank%20you%21" class="contact-link contact-link-primary">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             sctreatsshop@gmail.com
           </a>
@@ -292,7 +309,12 @@
 
 </main>
 <footer class="footer"><div class="footer-inner"><div class="footer-brand"><img src="/.netlify/images?url=/assets/logo-icon.png&amp;w=100&amp;q=82" alt="Sweet Confections by Kelsey" class="footer-logo-img" width="34" height="42" /><div><strong>Sweet Confections by Kelsey</strong><p>Based in Pittsfield, MA · Serving the Berkshires & surrounding areas · Fully Licensed & Insured</p></div></div><div class="footer-links"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="gallery.html">Gallery</a><a href="events.html">Events & Food Truck</a><a href="about.html">About</a><a href="gifts.html">Send a Gift</a><a href="blog.html">Blog</a><a href="contact.html">Order Info</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div><div class="footer-social"><a href="tel:+14133588556" aria-label="Call Kelsey at (413) 358-8556"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a><a href="https://www.facebook.com/SweetConfectionsShop/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a><a href="https://www.instagram.com/sctreatsbakery/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a><a href="mailto:sctreatsshop@gmail.com" aria-label="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a></div><p class="footer-copy">© <span class="js-year">2026</span> Sweet Confections by Kelsey · Made with 🤍 in Pittsfield, MA</p></div></footer>
-<div class="sticky-mobile-cta" id="stickyCta"><a href="#order" class="btn btn-primary btn-full">🎂 Place an Order</a></div>
+<div class="sticky-mobile-cta" id="stickyCta">
+  <div class="sticky-cta-row">
+    <a href="tel:+14133588556" class="sticky-cta-btn sticky-cta-call">📞 Call Kelsey</a>
+    <a href="contact.html#order" class="sticky-cta-btn sticky-cta-order">🎂 Order Form</a>
+  </div>
+</div>
 <div class="cart-drawer" id="cartDrawer" aria-hidden="true" inert role="dialog" aria-modal="true" aria-label="Your order request"><div class="cart-drawer-inner"><div class="cart-header"><h3>Your Request</h3><button class="cart-close" id="cartClose" aria-label="Close cart">✕</button></div><div class="cart-items" id="cartItems"><p class="cart-empty">Your cart is empty!</p></div><div class="cart-footer" id="cartFooter" style="display:none"><div class="cart-total"><span>Estimated Total</span><span id="cartTotal">$0</span></div><p class="cart-estimate-note">Final pricing is confirmed by Kelsey — custom designs vary.</p><a href="contact.html" class="btn btn-primary btn-full">Send Request →</a></div></div></div>
 <div class="cart-backdrop" id="cartBackdrop"></div>
 <script src="app.js"></script>

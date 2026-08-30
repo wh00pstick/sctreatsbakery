@@ -189,6 +189,7 @@
     ]
   }
   </script>
+  <script>document.documentElement.className+=' js';</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -215,17 +216,7 @@
       <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="index.html" class="mobile-link">Home</a>
-    <a href="shop.html" class="mobile-link">Shop</a>
-    <a href="gallery.html" class="mobile-link">Gallery</a>
-    <a href="events.html" class="mobile-link">Events & Food Truck</a>
-    <a href="about.html" class="mobile-link">About</a>
-    <a href="gifts.html" class="mobile-link">Send a Gift</a>
-    <a href="blog.html" class="mobile-link">Blog</a>
-    <a href="contact.html" class="mobile-link">Order Info</a>
-    <a href="contact.html" class="btn btn-primary mobile-cta">Request an Order</a>
-  </div>
+  <div class="mobile-menu" id="mobileMenu"><p class="mobile-group-label">Order or Contact</p><a href="tel:+14133588556" class="mobile-link mobile-link-strong">📞 Call Kelsey — (413) 358-8556</a><a href="mailto:sctreatsshop@gmail.com" class="mobile-link mobile-link-strong">✉️ Email Kelsey</a><a href="contact.html#order" class="mobile-link mobile-link-strong">📝 Order Form</a><a href="shop.html" class="mobile-link mobile-link-strong">🎂 See the Menu</a><p class="mobile-group-label">Look Around</p><a href="index.html" class="mobile-link">Home</a><a href="gallery.html" class="mobile-link">Gallery</a><a href="gifts.html" class="mobile-link">Send a Gift</a><a href="events.html" class="mobile-link active" aria-current="page">Events &amp; Food Truck</a><a href="about.html" class="mobile-link">About</a><a href="blog.html" class="mobile-link">Blog</a></div>
 </header>
 <main id="main">
 
@@ -666,7 +657,10 @@
 </footer>
 
 <div class="sticky-mobile-cta" id="stickyCta">
-  <a href="contact.html" class="btn btn-primary btn-full">🎂 Request an Order</a>
+  <div class="sticky-cta-row">
+    <a href="tel:+14133588556" class="sticky-cta-btn sticky-cta-call">📞 Call Kelsey</a>
+    <a href="contact.html#order" class="sticky-cta-btn sticky-cta-order">🎂 Order Form</a>
+  </div>
 </div>
 <div class="cart-drawer" id="cartDrawer" aria-hidden="true" inert role="dialog" aria-modal="true" aria-label="Your order request"><div class="cart-drawer-inner"><div class="cart-header"><h3>Your Request</h3><button class="cart-close" id="cartClose" aria-label="Close cart">✕</button></div><div class="cart-items" id="cartItems"><p class="cart-empty">Your cart is empty!</p></div><div class="cart-footer" id="cartFooter" style="display:none"><div class="cart-total"><span>Estimated Total</span><span id="cartTotal">$0</span></div><p class="cart-estimate-note">Final pricing is confirmed by Kelsey — custom designs vary.</p><a href="contact.html" class="btn btn-primary btn-full">Send Request →</a></div></div></div>
 <div class="cart-backdrop" id="cartBackdrop"></div>

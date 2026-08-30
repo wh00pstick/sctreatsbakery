@@ -44,16 +44,18 @@
   --brown-light:   #c4956a;
   --beige:         #f5ebe0;
   --text:          #2d1f18;
-  --text-muted:    #7a6560;
-  --text-faint:    #7a6560;
+  --text-muted:    #64504b;
+  --text-faint:    var(--text-muted);
   --border:        #ead9d3;
   --divider:       #f0ddd8;
 
   /* Type Scale */
-  --text-xs:   clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-  --text-sm:   clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-  --text-lg:   clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+  /* Flattened small steps: mobile was rendering a full step below desktop,
+     which is the wrong direction for readers with age-related acuity loss. */
+  --text-xs:   0.875rem;
+  --text-sm:   1rem;
+  --text-base: 1.125rem;
+  --text-lg:   clamp(1.25rem, 1.1rem + 0.65vw, 1.5rem);
   --text-xl:   clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
   --text-2xl:  clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
   --text-hero: clamp(2.75rem, 1rem + 6vw, 6rem);
@@ -546,7 +548,14 @@ input, select, textarea { font: inherit; color: inherit; }
 .footer-links { display: flex; flex-wrap: wrap; gap: var(--space-5); justify-content: center; }
 .footer-links a { color: rgba(255,255,255,0.6); font-size: var(--text-sm); transition: color var(--transition); }
 .footer-links a:hover { color: var(--pink-light); }
-.footer-social { display: flex; gap: var(--space-4); }
+.footer-social { display: flex; gap: var(--space-2); }
+.footer-social a {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 48px; min-height: 48px; border-radius: var(--radius-full);
+  color: rgba(255,255,255,0.6);
+  transition: color var(--transition), background var(--transition);
+}
+.footer-social a:hover, .footer-social a:focus-visible { color: var(--pink-light); background: rgba(255,255,255,0.08); }
 .footer-social a { color: rgba(255,255,255,0.5); transition: color var(--transition); }
 .footer-social a:hover { color: var(--pink-light); }
 .footer-copy { font-size: var(--text-xs); color: rgba(255,255,255,0.6); }
@@ -560,7 +569,27 @@ input, select, textarea { font: inherit; color: inherit; }
   border-top: 1px solid var(--divider);
   box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
 }
-@media (max-width: 768px) { .sticky-mobile-cta { display: block; } body { padding-bottom: 80px; } }
+.sticky-cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-2); }
+.sticky-cta-btn {
+  display: flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-height: 56px; padding: 0 var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--text-base); font-weight: 700; line-height: 1.2;
+  text-align: center; white-space: normal;
+}
+.sticky-cta-call  { background: var(--pink); color: #fff; }
+.sticky-cta-order { background: #fff; color: var(--pink-dark); border: 2px solid var(--pink); }
+@media (max-width: 900px) {
+  .sticky-mobile-cta {
+    display: block;
+    padding: var(--space-3) var(--space-4);
+    padding-bottom: calc(var(--space-3) + env(safe-area-inset-bottom, 0px));
+    z-index: 900;
+  }
+  body { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
+}
+/* (0,2,1) — beats the display rule above without !important */
+body.menu-open .sticky-mobile-cta, body.cart-open .sticky-mobile-cta { display: none; }
 
 /* ─── CART DRAWER ─── */
 .cart-drawer {
@@ -745,6 +774,31 @@ input, select, textarea { font: inherit; color: inherit; }
 }
 
 /* ─── CONTACT PAGE ─── */
+/* Call / Email / Form — the three ways to reach Kelsey, above the form.
+   Not .btn: that sets nowrap + line-height 1, both wrong for a 2-line label. */
+.contact-lede { font-size: var(--text-base); line-height: 1.6; }
+.contact-now {
+  display: grid; grid-template-columns: 1fr; gap: var(--space-3);
+  margin: var(--space-6) 0 var(--space-3); max-width: var(--content-narrow);
+}
+/* .contact-now sits inside .page-intro, whose `a` rule (0,1,1) would override
+   colour and add underlines — these selectors are (0,2,1) to win cleanly. */
+.contact-now a.contact-now-btn {
+  display: flex; align-items: center; gap: var(--space-4);
+  min-height: 68px; padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-lg); border: 2px solid var(--pink);
+  background: var(--pink); color: #fff; text-decoration: none; box-shadow: var(--shadow-sm);
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+.contact-now a.contact-now-btn:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.contact-now a.contact-now-btn.is-secondary { background: #fff; color: var(--pink-dark); text-decoration: none; }
+.contact-now a.contact-now-btn.is-secondary:hover { background: var(--pink-pale); }
+.contact-now-icon { display: flex; flex-shrink: 0; }
+.contact-now-label { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.contact-now-label strong { font-size: var(--text-lg); font-weight: 700; line-height: 1.2; }
+.contact-now-sub { font-size: var(--text-sm); opacity: 0.9; word-break: break-word; }
+.contact-now-note { font-size: var(--text-sm); color: var(--text-muted); max-width: var(--content-narrow); }
+@media (min-width: 769px) { .contact-now { grid-template-columns: repeat(3, 1fr); } .contact-now a.contact-now-btn { flex-direction: column; align-items: flex-start; } }
 .contact-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-10); align-items: start; }
 .form-card {
   background: #fff; border-radius: var(--radius-xl); padding: var(--space-8);
@@ -755,7 +809,9 @@ input, select, textarea { font: inherit; color: inherit; }
 .order-form { display: flex; flex-direction: column; gap: var(--space-5); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
 .form-group { display: flex; flex-direction: column; gap: var(--space-2); }
-.form-group label { font-size: var(--text-sm); font-weight: 600; color: var(--text); }
+.form-group label { font-size: var(--text-base); font-weight: 700; color: var(--text); line-height: 1.35; }
+.form-group label .req { font-size: var(--text-sm); font-weight: 600; color: var(--pink-dark); }
+.form-group label .opt { font-size: var(--text-sm); font-weight: 400; color: var(--text-muted); }
 .form-group input, .form-group select, .form-group textarea {
   padding: var(--space-3) var(--space-4);
   border: 2px solid var(--border); border-radius: var(--radius-md);
@@ -771,9 +827,9 @@ input, select, textarea { font: inherit; color: inherit; }
 }
 .form-group textarea { resize: vertical; min-height: 120px; }
 /* .field-error borders come from the runtime styles app.js injects */
-.field-error-msg { font-size: var(--text-sm); color: #b8405e; margin: 0; }
+.field-error-msg { font-size: var(--text-sm); font-weight: 700; color: #b8405e; margin: 0; }
 .field-error-msg:empty { display: none; }
-.field-hint { font-size: var(--text-xs); color: var(--text-faint); margin: 0; }
+.field-hint { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.5; margin: 0; }
 
 /* ─── BLOG ─── */
 .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-6); }
@@ -824,7 +880,7 @@ input, select, textarea { font: inherit; color: inherit; }
 
 /* ─── Brunch box picker (order form) ─── */
 .brunch-fieldset { border: 0; padding: 0; margin: 0; }
-.brunch-fieldset legend { font-size: var(--text-sm); font-weight: 600; color: var(--text); padding: 0; margin-bottom: var(--space-2); }
+.brunch-fieldset legend { font-size: var(--text-base); font-weight: 700; color: var(--text); padding: 0; margin-bottom: var(--space-2); }
 .checkbox-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--space-2); }
 .checkbox-option {
   display: flex; align-items: center; gap: var(--space-2);
@@ -889,11 +945,14 @@ input, select, textarea { font: inherit; color: inherit; }
 .info-list li { font-size: var(--text-sm); color: var(--text-muted); }
 .info-list strong { color: var(--text); }
 .contact-link {
-  display: flex; align-items: center; gap: var(--space-2);
-  font-size: var(--text-sm); color: var(--pink-dark); font-weight: 500;
-  padding: var(--space-2) 0; border-bottom: 1px solid var(--divider);
+  display: flex; align-items: center; gap: var(--space-3);
+  min-height: 56px;
+  font-size: var(--text-base); color: var(--pink-dark); font-weight: 600;
+  padding: var(--space-3) 0; border-bottom: 1px solid var(--divider);
   transition: color var(--transition);
 }
+.contact-link svg { width: 22px; height: 22px; flex-shrink: 0; }
+.contact-link-primary { font-size: var(--text-lg); font-weight: 700; }
 .contact-link:hover { color: var(--pink); }
 .contact-link:last-child { border-bottom: none; }
 .highlight-card { background: linear-gradient(135deg, var(--pink-pale), var(--blush)); border-color: var(--pink-light); }
@@ -904,8 +963,8 @@ input, select, textarea { font: inherit; color: inherit; }
 }
 
 /* ─── ANIMATIONS ─── */
-.fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+.js .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+.js .fade-in.visible { opacity: 1; transform: translateY(0); }
 
 /* ─── HOMEPAGE GALLERY STRIP WRAPPER ─── */
 .gallery-strip-wrap { padding: var(--space-14) 0; background: var(--warm-white); overflow: hidden; }
@@ -1367,7 +1426,35 @@ input, select, textarea {
   .cart-drawer { width: 100vw; max-width: 100vw; right: -100vw; }
 
   /* Generous tap spacing on nav links */
-  .mobile-link { padding: var(--space-3) 0; min-height: 44px; display: flex; align-items: center; }
+  .mobile-link { padding: var(--space-3) var(--space-2); min-height: 52px; font-size: var(--text-lg); display: flex; align-items: center; }
+
+  /* ── Tap targets: 48px+ floor for less precise fingers ── */
+  .btn      { min-height: 48px; padding: 0.75em 1.5em; line-height: 1.25; }
+  .btn-lg   { min-height: 56px; }
+  .btn-sm   { min-height: 48px; font-size: var(--text-sm); padding: 0.6em 1.25em; }
+  .filter-tabs { gap: var(--space-3); }
+  /* descendant selector out-specifies the .filter-tab rule app.js injects */
+  .filter-tabs .filter-tab { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 0 var(--space-5); }
+  .blog-card .read-more { min-height: 48px; display: flex; align-items: center; font-size: var(--text-base); }
+  .footer-links a { display: inline-flex; align-items: center; min-height: 44px; }
+
+  /* Brunch-box checkboxes: one per row, thumb-sized */
+  .checkbox-grid { grid-template-columns: 1fr; gap: var(--space-3); }
+  .checkbox-option { min-height: 56px; padding: var(--space-3) var(--space-4); font-size: var(--text-base); gap: var(--space-3); }
+  .checkbox-addon { align-self: stretch; }
+  .form-group .checkbox-option input[type="checkbox"] { width: 1.5rem; height: 1.5rem; }
+
+  /* Mobile menu must scroll — it now carries Call/Email actions up top */
+  .mobile-menu {
+    max-height: calc(100vh - var(--nav-height));
+    max-height: calc(100dvh - var(--nav-height));
+    overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+    gap: var(--space-2);
+    padding-bottom: calc(var(--space-6) + env(safe-area-inset-bottom, 0px));
+  }
+  .mobile-group-label { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-top: var(--space-4); border: 0; font-weight: 700; }
+  .mobile-link-strong { font-weight: 700; color: var(--text); }
+  .mobile-link.active { color: var(--pink-dark); font-weight: 700; background: var(--pink-pale); border-radius: var(--radius-sm); padding-inline: var(--space-3); margin-inline: calc(var(--space-3) * -1); }
 }
 
 @media (max-width: 600px) {

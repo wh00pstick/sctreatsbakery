@@ -300,7 +300,7 @@
     // Sticky mobile CTA: hide near top, show after scrolling past hero
     var stickyCta = document.getElementById('stickyCta');
     if (stickyCta) {
-      stickyCta.classList.toggle('visible', currentScrollY > 400);
+      stickyCta.classList.add('visible');
     }
 
     lastScrollY = currentScrollY;
@@ -730,16 +730,9 @@
     '.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }',
     '.hamburger.active span:nth-child(2) { opacity: 0; }',
     '.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }',
-    /* Sticky mobile CTA */
-    '.sticky-mobile-cta { position: fixed; bottom: 0; left: 0; right: 0; padding: 0.875rem 1rem; background: #fffcf9; border-top: 1px solid #fce8ef; z-index: 900; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.4,0,0.2,1); display: none; box-shadow: 0 -4px 24px rgba(201,116,138,0.15); }',
-    '@media(max-width:768px) { .sticky-mobile-cta { display: block; } }',
-    '.sticky-mobile-cta.visible { transform: translateY(0); }',
     /* Header scrolled state */
     '.site-header { transition: box-shadow 0.3s, background 0.3s; }',
     '.site-header.scrolled { box-shadow: 0 4px 30px rgba(201,116,138,0.12); background: rgba(255,252,249,0.98); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }',
-    /* Fade-in animation */
-    '.fade-in { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }',
-    '.fade-in.visible { opacity: 1; transform: translateY(0); }',
     /* Filter tabs */
     '.filter-tab { background: none; border: 1.5px solid #f2b8c6; border-radius: 999px; padding: 0.5rem 1.25rem; font-size: 0.875rem; cursor: pointer; color: #a85870; transition: all 0.2s; font-family: "DM Sans", sans-serif; }',
     '.filter-tab:hover { border-color: #c9748a; color: #c9748a; background: #fce8ef; }',
