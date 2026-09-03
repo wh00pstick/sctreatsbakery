@@ -14,3 +14,7 @@
 # short enough that a swapped photo (same filename) refreshes within a day.
 /assets/*
   Cache-Control: public, max-age=86400
+
+# Draft posts waiting for their publish date: served, but never indexed.
+/drafts/*
+  X-Robots-Tag: noindex, nofollow

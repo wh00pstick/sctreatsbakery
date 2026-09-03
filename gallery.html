@@ -100,11 +100,178 @@
 </div>
 
 </main>
-<footer class="footer"><div class="footer-inner"><div class="footer-brand"><img src="/.netlify/images?url=/assets/logo-icon.png&amp;w=100&amp;q=82" alt="Sweet Confections by Kelsey" class="footer-logo-img" width="34" height="42" /><div><strong>Sweet Confections by Kelsey</strong><p>Based in Pittsfield, MA · Serving the Berkshires & surrounding areas · Fully Licensed & Insured</p></div></div><div class="footer-links"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="gallery.html">Gallery</a><a href="events.html">Events & Food Truck</a><a href="about.html">About</a><a href="gifts.html">Send a Gift</a><a href="blog.html">Blog</a><a href="contact.html">Order Info</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div><p class="footer-contact"><a href="tel:+14133588556">📞 (413) 358-8556</a><a href="mailto:sctreatsshop@gmail.com">✉️ sctreatsshop@gmail.com</a></p><p class="footer-copy">© <span class="js-year">2026</span> Sweet Confections by Kelsey · Made with 🤍 in Pittsfield, MA</p></div></footer>
+<footer class="footer"><div class="footer-inner"><div class="footer-brand"><img src="/.netlify/images?url=/assets/logo-icon.png&amp;w=100&amp;q=82" alt="Sweet Confections by Kelsey" class="footer-logo-img" width="34" height="42" /><div><strong>Sweet Confections by Kelsey</strong><p>Based in Pittsfield, MA · Serving the Berkshires & surrounding areas · Fully Licensed & Insured</p></div></div><div class="footer-links"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="gallery.html">Gallery</a><a href="events.html">Events & Food Truck</a><a href="about.html">About</a><a href="gifts.html">Send a Gift</a><a href="blog.html">Blog</a><a href="contact.html">Order Info</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div><p class="footer-contact"><a href="tel:+14133588556">📞 (413) 358-8556</a><a href="mailto:sctreatsshop@gmail.com">✉️ sctreatsshop@gmail.com</a></p><form class="footer-signup" name="seasonal-menu-alerts" method="POST" action="/thanks.html" data-netlify="true" netlify-honeypot="bot-field" aria-label="Seasonal menu email signup"><input type="hidden" name="form-name" value="seasonal-menu-alerts" /><p class="footer-signup-trap" hidden><label>Leave this empty <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label></p><label for="signupEmail" class="footer-signup-label">Get holiday menus &amp; seasonal specials by email</label><div class="footer-signup-row"><input type="email" id="signupEmail" name="email" placeholder="you@example.com" required autocomplete="email" inputmode="email" /><button type="submit" class="btn btn-primary">Sign Me Up</button></div><p class="footer-signup-note">A few emails a year &mdash; Thanksgiving, Christmas, Valentine&rsquo;s, Easter. Unsubscribe any time.</p><p class="footer-signup-done" role="status" tabindex="-1" hidden>&#10003; You&rsquo;re on the list! Watch for the next seasonal menu.</p><p class="footer-signup-error" role="alert" hidden>That didn&rsquo;t go through. Please try again, or email <a href="mailto:sctreatsshop@gmail.com">sctreatsshop@gmail.com</a>.</p></form><p class="footer-copy">© <span class="js-year">2026</span> Sweet Confections by Kelsey · Made with 🤍 in Pittsfield, MA</p></div></footer>
 
 <script>
 document.addEventListener('DOMContentLoaded', function(){
   var TOTAL = 162;
+  // One caption per photo, in order — used for alt text so the gallery
+  // reads properly to screen readers and to Google Images.
+  var CAPTIONS = [
+    "Sweet Confections by Kelsey logo",
+    "Pink and blue frosted vanilla cupcakes for a gender reveal party",
+    "Vanilla cupcakes topped with fresh raspberries in kraft wrappers",
+    "Chocolate chip muffins cooling on a wire rack",
+    "Boxes of raspberry-topped vanilla cupcakes ready for pickup",
+    "Streusel-topped coffee cake muffins",
+    "Fall dessert platter with apple bars and pecan pie bars",
+    "Glazed pumpkin coffee cake cookies on a cooling rack",
+    "Apple crisp bars with vanilla glaze",
+    "Thanksgiving dessert platter menu: sweet potato pie bars, pumpkin coffee cake cookies, brown butter apple blondies, pecan pie bars, and apple crisp",
+    "Cupcakes with vanilla and caramel buttercream swirls on a party tray",
+    "Fall dessert platter with s'mores bars, cookies, and blondies",
+    "Chocolate chip muffins in white liners",
+    "Toasted marshmallow s'mores bars on a fall platter",
+    "Dessert platter with pecan pie bars, s'mores bars, and cookies",
+    "Sheet of toasted marshmallow s'mores bars",
+    "Chocolate chip muffins on a wooden board",
+    "Iced sugar cookies drizzled with white icing",
+    "Chocolate cupcakes with marshmallow frosting and chocolate drizzle",
+    "Vanilla cupcakes with swirled buttercream in a pickup box",
+    "Trays of toasted marshmallow bars fresh from the oven",
+    "White chocolate raspberry swirl cupcakes",
+    "Party platter of cookies and frosted cupcakes",
+    "Holiday platter announcement graphic",
+    "Boxed crumb bars with streusel topping",
+    "Dessert platters packed in the car for delivery",
+    "Platter of assorted caramel, vanilla, and chocolate frosted cupcakes",
+    "Holiday cupcake platter menu: white chocolate peppermint, orange cranberry, hot chocolate, eggnog, and gingerbread cupcakes",
+    "Chocolate bundt cake with chocolate ganache and chocolate chips",
+    "Holiday cupcake platter menu graphic",
+    "Holiday menu graphic with cupcake and cookie options",
+    "Chocolate cupcakes with a white icing swirl, hostess style",
+    "Cream-filled chocolate cupcakes on a cooling rack",
+    "Chocolate chip cookies on a baking mat",
+    "Bagged chocolate chip cookies for a treat order",
+    "Cookie and cupcake platter for a party",
+    "Kelsey and her family at a community event",
+    "Wedding dessert table with pampas grass and candles",
+    "Platter of cookies and vanilla-frosted cupcakes",
+    "Pink and blue frosted chocolate cupcakes for a gender reveal",
+    "Caramel cupcakes with chocolate shards and caramel drizzle",
+    "Vanilla cupcakes with piped buttercream rosettes",
+    "Pan of cinnamon rolls with cream cheese icing",
+    "Pastel peach, lavender, and sage buttercream rosette cupcakes",
+    "White buttercream cake with red raspberry drip",
+    "Sunday Bun Day cinnamon roll announcement",
+    "Carrot cake cupcakes with cream cheese frosting",
+    "Banana pudding topped with fresh banana slices",
+    "Berkshire County Cupcake Wars competition flyer",
+    "Wedding dessert table with cupcakes on a gold stand and candles",
+    "Cinnamon rolls with cream cheese icing",
+    "Frosted cinnamon rolls in a bakery box",
+    "Maple bacon cinnamon rolls",
+    "Homemade banana pudding with banana slices",
+    "Two pans of cinnamon rolls, original and maple bacon",
+    "Strawberry cupcakes with glitter strawberry toppers",
+    "Vanilla cupcakes with red sprinkles",
+    "Pans of freshly baked cinnamon rolls",
+    "Jungle animal first birthday cake with ombre green buttercream",
+    "Packaged banana bread cinnamon buns with cream cheese frosting",
+    "Pink and rainbow buttercream rosette cupcakes",
+    "Wedding cupcakes on a gold stand with pampas grass and candles",
+    "Chocolate cupcakes with vanilla buttercream swirls",
+    "Wedding dessert table with cupcakes and cake under string lights",
+    "Wedding dessert table with cupcakes under string lights",
+    "Sunday Bun Day cinnamon roll announcement",
+    "NAMI Berkshire County People's Choice Award plaque for 2024 Cupcake Wars",
+    "Wedding cupcakes on a gold cake stand with pampas grass",
+    "Sunday Bun Day menu: original and red velvet cinnamon buns",
+    "Pan of unfrosted cinnamon rolls",
+    "Carrot cake cupcakes with cream cheese frosting and buttercream carrots",
+    "Labeled pans of cinnamon buns with cream cheese frosting",
+    "Boxed carrot cake cupcakes with buttercream carrots",
+    "Rocky road s'mores bars with toasted marshmallow",
+    "White chocolate dipped ginger cookies",
+    "Pastel buttercream rosette cupcakes in peach, lavender, sage, and cream",
+    "Boxed cinnamon rolls with cream cheese frosting",
+    "Cream cheese frosted cinnamon rolls close up",
+    "Stacked containers of cupcakes ready for an event",
+    "Chocolate chip muffins on a cooling rack",
+    "Pan of unfrosted cinnamon rolls",
+    "Chocolate cupcakes with caramel drizzle in a pickup box",
+    "Red velvet cinnamon rolls",
+    "Boxed carrot cake cupcakes with buttercream carrots",
+    "Chocolate chip muffins",
+    "Chocolate cupcake with vanilla buttercream and chocolate drizzle",
+    "Chocolate cupcake with piped vanilla buttercream and chocolate drizzle",
+    "Sunday Bun Day cinnamon roll announcement",
+    "Maple bacon cinnamon rolls with cream cheese frosting",
+    "Cinnamon sugar swirl on a pan of cinnamon rolls",
+    "Two pans of cinnamon rolls, one frosted and one plain",
+    "Box of cream cheese frosted cinnamon rolls",
+    "Pans of frosted cinnamon rolls",
+    "Labeled pans of cream cheese frosted cinnamon buns",
+    "Funfetti cupcake with vanilla frosting and sprinkles",
+    "Boxed pink and rainbow rosette cupcakes",
+    "Unfrosted cinnamon rolls in a pan",
+    "Maple bacon cinnamon rolls",
+    "Sunday Bun Day cinnamon roll announcement",
+    "Stacked containers of pastel rosette cupcakes",
+    "Pan of cinnamon rolls with cream cheese frosting",
+    "Golden baked cinnamon rolls in a pan",
+    "Box of chocolate cupcakes with drizzle and chocolate chip cookies",
+    "Baked cinnamon rolls in a foil pan",
+    "Boxed cinnamon rolls with cream cheese frosting",
+    "Chocolate chip cookies close up",
+    "Pan of cinnamon rolls",
+    "Mocha cake with coffee buttercream and piped swirls",
+    "Pecan pie bars in a pan",
+    "Lemon blueberry cupcakes with fresh blueberries",
+    "Sunday Bun Day menu: original and maple bacon cinnamon buns",
+    "Sweet Confections by Kelsey gift certificate",
+    "Cinnamon rolls in a pan",
+    "Labeled pan of cream cheese frosted cinnamon buns",
+    "Boxed cinnamon rolls",
+    "Sunday Bun Day cinnamon roll announcement",
+    "Frosted cinnamon buns",
+    "Red velvet cinnamon rolls",
+    "Carrot cake cupcakes in a window box",
+    "Chocolate cupcakes with vanilla swirl and chocolate drizzle",
+    "Box of cream cheese frosted cinnamon rolls",
+    "Now offering gluten-free cupcakes, cakes, and cinnamon buns",
+    "Maple bacon cinnamon buns with cream cheese frosting",
+    "White birthday cake with raspberry drizzle and candles",
+    "Carrot cake cupcakes with buttercream carrots",
+    "Cupcakes in kraft wrappers on a party tray",
+    "Chocolate swirl cinnamon rolls",
+    "Pastel cupcakes with sprinkles and sugar pearls",
+    "Chocolate cupcakes with caramel drizzle",
+    "Strawberry cupcakes with glitter strawberry toppers",
+    "First birthday cake with blush buttercream rosettes and a ONE banner",
+    "White birthday cake with sprinkles and a Happy Birthday topper",
+    "Pan of cinnamon rolls",
+    "Cinnamon rolls close up",
+    "Easter menu: original cinnamon buns and carrot cake cupcakes",
+    "Pan of cinnamon rolls",
+    "Box of chocolate chip cookies",
+    "Sunday Bun Day menu: original and banana bread cinnamon buns",
+    "Boxed orders lined up and ready for pickup",
+    "Pink cupcakes with gold and dried floral toppers",
+    "Strawberry shortcake cupcake with a fresh strawberry",
+    "Pan of cinnamon rolls",
+    "Chocolate chunk cookies on a cooling rack",
+    "Labeled pan of cream cheese frosted cinnamon buns",
+    "Chocolate chip muffins on a cooling rack",
+    "Cookies and cream cinnamon buns with crushed Oreo",
+    "Cream cheese frosted cinnamon buns",
+    "Buttercream flower bouquet cake with roses and daisies",
+    "Raspberry-topped vanilla cupcakes in a pickup box",
+    "Chocolate chip cookies",
+    "Pans of frosted cinnamon rolls",
+    "White cake with piped buttercream swirls and graham cracker crumb center",
+    "Red, white, and blue buttercream birthday cake with topper",
+    "Containers of vanilla-frosted cupcakes",
+    "Chocolate chip cinnamon rolls",
+    "Valentine's Day thank-you graphic",
+    "Pastel buttercream rosette cupcakes",
+    "Boxed pastel rosette cupcakes",
+    "Raspberry cinnamon rolls",
+    "Cream cheese frosted cinnamon buns",
+    "Squishmallow-themed birthday cake with pastel rainbow and pink drip",
+    "Cookie Monster birthday cake surrounded by chocolate chip cookies"
+  ];
+  function captionFor(i) { return CAPTIONS[i - 1] || ('Sweet Confections creation #' + i); }
   var grid = document.getElementById('galleryGrid');
   var countEl = document.getElementById('galleryCount');
   if (!grid) return;
@@ -118,10 +285,10 @@ document.addEventListener('DOMContentLoaded', function(){
     btn.type = 'button';
     btn.className = 'gallery-item';
     btn.setAttribute('data-index', i - 1);
-    btn.setAttribute('aria-label', 'Open photo ' + i);
+    btn.setAttribute('aria-label', 'Open photo ' + i + ': ' + captionFor(i));
     var img = document.createElement('img');
     img.src = '/.netlify/images?url=/assets/gallery/sweet-' + num + '.jpg&w=500&q=60';
-    img.alt = 'Sweet Confections creation #' + i;
+    img.alt = captionFor(i);
     img.loading = 'lazy';
     btn.appendChild(img);
     frag.appendChild(btn);
@@ -141,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function(){
     currentIndex = ((i % TOTAL) + TOTAL) % TOTAL;
     var num = String(currentIndex + 1).padStart(3, '0');
     lbImage.src = '/.netlify/images?url=/assets/gallery/sweet-' + num + '.jpg&w=1200&q=68';
-    lbImage.alt = 'Sweet Confections creation #' + (currentIndex + 1);
+    lbImage.alt = captionFor(currentIndex + 1);
     lbCounter.textContent = (currentIndex + 1) + ' / ' + TOTAL;
     lb.classList.add('active');
     lb.setAttribute('aria-hidden', 'false');

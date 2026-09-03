@@ -12,6 +12,48 @@
     document.querySelectorAll('.js-year').forEach(function (el) { el.textContent = y; });
   })();
 
+  /* Footer email signup — posts to Netlify Forms without leaving the page.
+     Without JS (or fetch) the form falls back to a normal POST to /thanks.html. */
+  (function () {
+    var form = document.querySelector('.footer-signup');
+    if (!form || !window.fetch || !window.URLSearchParams) return;
+    var row  = form.querySelector('.footer-signup-row');
+    var note = form.querySelector('.footer-signup-note');
+    var done = form.querySelector('.footer-signup-done');
+    var err  = form.querySelector('.footer-signup-error');
+    var btn  = form.querySelector('button[type="submit"]');
+
+    function showDone() {
+      if (row) row.hidden = true;
+      if (note) note.hidden = true;
+      if (done) { done.hidden = false; done.focus(); }
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = form.querySelector('input[type="email"]');
+      if (email && !email.checkValidity()) { email.reportValidity(); return; }
+
+      // Honeypot — pretend it worked so bots don't retry
+      var trap = form.querySelector('input[name="bot-field"]');
+      if (trap && trap.value) { showDone(); return; }
+
+      if (btn) { btn.disabled = true; btn.textContent = 'Adding you…'; }
+      if (err) err.hidden = true;
+
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      })
+      .then(function (r) { if (!r.ok) throw new Error('Signup failed'); showDone(); })
+      .catch(function () {
+        if (btn) { btn.disabled = false; btn.textContent = 'Sign Me Up'; }
+        if (err) err.hidden = false;
+      });
+    });
+  })();
+
   /* ----------------------------------------------------------
      1. CART SYSTEM
      Persisted in sessionStorage so it survives page navigation.
